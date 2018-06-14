@@ -1,11 +1,16 @@
 import java.util.Queue;
 import java.util.PriorityQueue;
 public abstract class Modulo {
-    private int numeroServidores;
-    private Queue<Consulta> cola;
-    private Estadistico estadistico;
-    private PriorityQueue<Evento> listaDeEventos;
-    private CalculadorValoresAleatorios calculador;
+    protected int numeroServidores;
+    protected Queue<Consulta> cola;
+    protected Estadistico estadistico;
+    protected PriorityQueue<Evento> listaDeEventos;
+    protected CalculadorValoresAleatorios calculador;
+    protected SistemaPintoDB sistemaPintoDB;
+
+    public void setNumeroServidores(int numeroServidores) {
+        this.numeroServidores = numeroServidores;
+    }
 
     abstract void procesarLlegada();
     abstract void procesarSalida();

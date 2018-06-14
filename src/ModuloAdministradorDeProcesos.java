@@ -12,11 +12,11 @@ public class ModuloAdministradorDeProcesos extends Modulo {
 
     }
 
-    private void generarSalidaAdmProcesos(){
+    public void generarSalidaAdmProcesos(){
 
     }
 
-    private void generarEntradaProcConsultas(){
+    public void generarEntradaProcConsultas(){
 
     }
 }
