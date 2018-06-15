@@ -19,6 +19,13 @@ public class SistemaPintoDB {
     public SistemaPintoDB(Estadistico estadistico, EstadisticoConsulta estadisticoConsulta){
         this.estadistico = estadistico;
         this.estadisticoConsulta = estadisticoConsulta;
+        TipoConsulta tipoConsulta = calculador.genMonteCarloConsulta();
+        listaDeEventos.add(new Evento(TipoModulo.ClientesYConexiones, 0, new Consulta(tipoConsulta, adminClientes.getTimeout()) , true ));
+    }
+
+    public SistemaPintoDB(){
+        TipoConsulta tipoConsulta = calculador.genMonteCarloConsulta();
+        listaDeEventos.add(new Evento(TipoModulo.ClientesYConexiones, 0, new Consulta(tipoConsulta, adminClientes.getTimeout()) , true ));
     }
 
     public void setDuracionSimulacion(double duracionSimulacion){
@@ -31,12 +38,17 @@ public class SistemaPintoDB {
 
     public void simular(){
         reloj = 0.0; // segundos
-        double llegada = calculador.genValorExponencial(2); // 30 conexiones por min = 1 conex cada 2 seg
         while(reloj < duracionSimulacion){
-            
+            reloj = listaDeEventos.peek().getTiempoOcurrencia();
+            boolean esLlegada = listaDeEventos.peek().isLlegada();
+            TipoModulo tipoModulo = listaDeEventos.peek().getTipoModulo();
 
-
-            
+            if(tipoModulo == TipoModulo.ClientesYConexiones && esLlegada)
+                adminClientes.procesarLlegada();
+            else if (tipoModulo ==  TipoModulo.AdministradorDeProcesos && esLlegada)
+                adminProcesos.procesarLlegada();
+            else if (tipoModulo == TipoModulo.AdministradorDeProcesos && !esLlegada)
+                adminProcesos.procesarSalida();
         }
     }
 }

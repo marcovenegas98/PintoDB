@@ -9,12 +9,32 @@ public class CalculadorValoresAleatorios {
     
     
     public CalculadorValoresAleatorios(){
-        
+        tablaDistribucionConsultas[0] = 0.3;
+        tablaDistribucionConsultas[1] = 0.55;
+        tablaDistribucionConsultas[2] = 0.85;
+        tablaDistribucionConsultas[3] = 1;
     }
     
     public double genNumAle(){
-        double random = Math.random()*1;
-        return random;
+        return Math.random()*1;
+    }
+
+    public TipoConsulta genMonteCarloConsulta(){
+        double randomNumber = genNumAle();
+        TipoConsulta tipoConsulta;
+        if(0<= randomNumber && randomNumber < tablaDistribucionConsultas[0]){
+            tipoConsulta = TipoConsulta.SELECT;
+        }else {
+            if (tablaDistribucionConsultas[0] <= randomNumber && randomNumber < tablaDistribucionConsultas[1])
+                tipoConsulta = TipoConsulta.UPDATE;
+            else {
+                if (tablaDistribucionConsultas[1] <= randomNumber && randomNumber <= tablaDistribucionConsultas[2])
+                    tipoConsulta = TipoConsulta.JOIN;
+                else
+                    tipoConsulta = TipoConsulta.DDL;
+            }
+        }
+        return tipoConsulta;
     }
     
     public double genValorRandomNormal(){
@@ -25,7 +45,7 @@ public class CalculadorValoresAleatorios {
         double zeta = sumNumAl - 6;
         return (1 + (zeta * 0.1));
     }
-    
+
     public double genValorUniformeContinuo(double cotaInferior, double cotaSuperior){
         return cotaInferior + ( (cotaSuperior - cotaInferior) * this.genNumAle());  
     }

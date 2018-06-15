@@ -11,7 +11,21 @@ public class Consulta {
 
     }
 
-    public TipoConsulta getTipoConsulta() {
+
+    public Consulta(TipoConsulta tipoConsulta, double tiempoRestante){
+        this.tipoConsulta = tipoConsulta;
+        this.obtenerReadOnly();
+        this.tiempoRestante = tiempoRestante;
+    }
+
+    private void obtenerReadOnly(){
+        if(tipoConsulta == TipoConsulta.SELECT || tipoConsulta == TipoConsulta.JOIN)
+            readOnly = true;
+        else
+            readOnly = false;
+    }
+
+    public TipoConsulta getTipoConsulta(){
         return tipoConsulta;
     }
 
