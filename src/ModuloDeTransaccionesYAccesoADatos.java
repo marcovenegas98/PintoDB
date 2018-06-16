@@ -5,7 +5,7 @@ public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
     }
 
     void procesarLlegada(){
-
+        
     }
 
     void procesarSalida(){

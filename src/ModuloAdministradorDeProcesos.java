@@ -6,6 +6,7 @@ public class ModuloAdministradorDeProcesos extends Modulo {
 
     void procesarLlegada(){
         if(numeroServidores == 0){
+            listaDeEventos.peek().getConsulta().setTiempoEnCola(sistemaPintoDB.reloj); // tiempo en el que ingresó en la cola
             cola.add(listaDeEventos.peek().getConsulta());
         }else{
             this.generarSalidaAdmProcesos( listaDeEventos.peek().getConsulta() );
@@ -17,6 +18,9 @@ public class ModuloAdministradorDeProcesos extends Modulo {
     void procesarSalida(){
         if(cola.size() > 0){
             Consulta consulta = cola.poll();
+            consulta.setTiempoEnCola( sistemaPintoDB.reloj -  consulta.getTiempoEnCola()  ); // tiempo en el que salió - tiempo en el que ingresó = tiempo en cola
+            consulta.setTiempoRestante( consulta.getTiempoEnCola() - consulta.getTiempoRestante()) ; // tiempo que dure en cola - el tiempo que me queda de conexion
+            // If de que si el tiempo restante es negativo, se cierra la conexion
             generarSalidaAdmProcesos(consulta);
         }else{
             numeroServidores++;
@@ -24,7 +28,7 @@ public class ModuloAdministradorDeProcesos extends Modulo {
     }
 
     private void generarSalidaAdmProcesos(Consulta consulta){
-        double tiempo = calculador.genValorRandomNormal(); // 3
+        double tiempo = calculador.genValorRandomNormal(); //
         double tiempoOcurrencia = tiempo + sistemaPintoDB.reloj;
         double tiempoRestante = (tiempo + sistemaPintoDB.reloj) - listaDeEventos.peek().getConsulta().getTiempoRestante();
         TipoConsulta tc = consulta.getTipoConsulta();
@@ -36,6 +40,6 @@ public class ModuloAdministradorDeProcesos extends Modulo {
         double tiempoOcurrencia = tiemp + sistemaPintoDB.reloj;
         double tiempoRestante = (tiemp + sistemaPintoDB.reloj) - listaDeEventos.peek().getConsulta().getTiempoRestante();
         TipoConsulta tc = listaDeEventos.peek().getConsulta().getTipoConsulta();
-        listaDeEventos.add(new Evento(TipoModulo.TransaccionYAccesoADatos, tiempoOcurrencia, new Consulta(tc,tiempoRestante) , true));
+        listaDeEventos.add(new Evento(TipoModulo.ProcesadorDeConsultas, tiempoOcurrencia, new Consulta(tc,tiempoRestante) , true));
     }
 }
