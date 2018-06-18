@@ -1,45 +1,54 @@
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+
 public class ModuloAdministradorDeProcesos extends Modulo {
 
-    public ModuloAdministradorDeProcesos(){
-        numeroServidores = 1; //
+    public ModuloAdministradorDeProcesos(Estadistico estadistico, EstadisticoConsulta estadisticoConsulta, PriorityQueue<Evento> listaDeEventos, CalculadorValoresAleatorios calculador, double reloj, double timeout){
+        super(estadistico, estadisticoConsulta, listaDeEventos, calculador, reloj,1, timeout);//Solo tiene un servidor
+        this.cola = new LinkedList<>();
     }
 
-    void procesarLlegada(){
+    void procesarLlegada(Consulta consulta){
+        consulta.setTiempoIngresoModulo(this.reloj);
+        estadisticoConsulta.incrementarConsultasRecibidas(0, getCasillaParaEstadistico(consulta));
         if(numeroServidores == 0){
-            listaDeEventos.peek().getConsulta().setTiempoEnCola(sistemaPintoDB.reloj); // tiempo en el que ingresó en la cola
-            cola.add(listaDeEventos.peek().getConsulta());
+            consulta.setTiempoIngresoCola(this.reloj); //Ingresa a la cola
+            cola.add(consulta);
         }else{
-            this.generarSalidaAdmProcesos( listaDeEventos.peek().getConsulta() );
-
+            this.generarSalidaAdmProcesos(consulta);
             numeroServidores--;
         }
     }
 
-    void procesarSalida(){
-        if(cola.size() > 0){
-            Consulta consulta = cola.poll();
-            consulta.setTiempoEnCola( sistemaPintoDB.reloj -  consulta.getTiempoEnCola()  ); // tiempo en el que salió - tiempo en el que ingresó = tiempo en cola
-            consulta.setTiempoRestante( consulta.getTiempoEnCola() - consulta.getTiempoRestante()) ; // tiempo que dure en cola - el tiempo que me queda de conexion
-            // If de que si el tiempo restante es negativo, se cierra la conexion
-            generarSalidaAdmProcesos(consulta);
+    void procesarSalida(Consulta consulta){
+        double tiempoTranscurrido = this.reloj-consulta.getTiempoIngresoModulo();
+        estadisticoConsulta.incrementarTiempoConsulta(0, getCasillaParaEstadistico(consulta), tiempoTranscurrido);
+        double tiempoRestante = consulta.getTiempoRestante() - tiempoTranscurrido;
+        consulta.setTiempoRestante(tiempoRestante);
+
+        if(cola.size() > 0){ //Si hay gente en la cola.
+            Consulta otraConsulta = cola.poll(); //Saco a otra consulta de la cola
+            otraConsulta.setTiempoEnCola(this.reloj-otraConsulta.getTiempoIngresoCola());
+            generarSalidaAdmProcesos(otraConsulta);
         }else{
             numeroServidores++;
+        }
+        if(tiempoRestante <= 0){ //timeout
+            this.listaDeEventos.add(new Evento(TipoEvento.TIMEOUT, TipoModulo.ClientesYConexiones, this.reloj, consulta));
+        }else {
+            generarEntradaProcConsultas(consulta);
         }
     }
 
     private void generarSalidaAdmProcesos(Consulta consulta){
-        double tiempo = calculador.genValorRandomNormal(); //
-        double tiempoOcurrencia = tiempo + sistemaPintoDB.reloj;
-        double tiempoRestante = (tiempo + sistemaPintoDB.reloj) - listaDeEventos.peek().getConsulta().getTiempoRestante();
-        TipoConsulta tc = consulta.getTipoConsulta();
-        listaDeEventos.add(new Evento(TipoModulo.AdministradorDeProcesos, tiempoOcurrencia, new Consulta(tc, tiempoRestante), false));
-        this.generarEntradaProcConsultas(tiempo);
+        double tiempoEnServicio = calculador.genValorRandomNormal(); //Valor normal
+        consulta.setTiempoEnServicio(tiempoEnServicio); //Este es el tiempo que duran en atenderme
+        double tiempoOcurrencia = tiempoEnServicio + this.reloj; //La salida se da en el tiempo actual + el que duren en atenderme
+
+        this.listaDeEventos.add(new Evento(TipoEvento.SALIDA, TipoModulo.AdministradorDeProcesos, tiempoOcurrencia, consulta));
     }
 
-    private void generarEntradaProcConsultas(double tiemp){
-        double tiempoOcurrencia = tiemp + sistemaPintoDB.reloj;
-        double tiempoRestante = (tiemp + sistemaPintoDB.reloj) - listaDeEventos.peek().getConsulta().getTiempoRestante();
-        TipoConsulta tc = listaDeEventos.peek().getConsulta().getTipoConsulta();
-        listaDeEventos.add(new Evento(TipoModulo.ProcesadorDeConsultas, tiempoOcurrencia, new Consulta(tc,tiempoRestante) , true));
+    private void generarEntradaProcConsultas(Consulta consulta){
+        listaDeEventos.add(new Evento(TipoEvento.ENTRADA, TipoModulo.ProcesadorDeConsultas, this.reloj, consulta));
     }
 }

@@ -14,7 +14,8 @@ public class CalculadorValoresAleatorios {
         tablaDistribucionConsultas[2] = 0.85;
         tablaDistribucionConsultas[3] = 1;
     }
-    
+
+    //Devuelve un número aleatorio entre 0 y 1
     public double genNumAle(){
         return Math.random()*1;
     }
@@ -22,18 +23,17 @@ public class CalculadorValoresAleatorios {
     public TipoConsulta genMonteCarloConsulta(){
         double randomNumber = genNumAle();
         TipoConsulta tipoConsulta;
-        if(0<= randomNumber && randomNumber < tablaDistribucionConsultas[0]){
+
+        if(randomNumber < tablaDistribucionConsultas[0]){
             tipoConsulta = TipoConsulta.SELECT;
-        }else {
-            if (tablaDistribucionConsultas[0] <= randomNumber && randomNumber < tablaDistribucionConsultas[1])
-                tipoConsulta = TipoConsulta.UPDATE;
-            else {
-                if (tablaDistribucionConsultas[1] <= randomNumber && randomNumber <= tablaDistribucionConsultas[2])
-                    tipoConsulta = TipoConsulta.JOIN;
-                else
-                    tipoConsulta = TipoConsulta.DDL;
-            }
+        }else if(randomNumber < tablaDistribucionConsultas[1]){
+            tipoConsulta = TipoConsulta.UPDATE;
+        }else if(randomNumber < tablaDistribucionConsultas[2]){
+            tipoConsulta = TipoConsulta.JOIN;
+        }else{
+            tipoConsulta = TipoConsulta.DDL;
         }
+
         return tipoConsulta;
     }
     

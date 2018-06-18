@@ -1,3 +1,7 @@
 public enum TipoModulo{
-    ClientesYConexiones, ProcesadorDeConsultas, TransaccionYAccesoADatos, AdministradorDeProcesos, EjecutorDeSentencias, TimeOut
+    ClientesYConexiones,
+    AdministradorDeProcesos,
+    ProcesadorDeConsultas,
+    TransaccionYAccesoADatos,
+    EjecutorDeSentencias;
 }

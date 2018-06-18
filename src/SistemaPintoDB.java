@@ -13,19 +13,26 @@ public class SistemaPintoDB {
     public double reloj;
     public PriorityQueue<Evento> listaDeEventos;
 
+    private int[] parametros; //k, n, p, m. En ese orden.
+    private double timeout;
     private double duracionSimulacion; //en segundos
 
 
-    public SistemaPintoDB(Estadistico estadistico, EstadisticoConsulta estadisticoConsulta){
+    public SistemaPintoDB(Estadistico estadistico, EstadisticoConsulta estadisticoConsulta, int[] parametros){
+        this.parametros = parametros;
         this.estadistico = estadistico;
         this.estadisticoConsulta = estadisticoConsulta;
-        TipoConsulta tipoConsulta = calculador.genMonteCarloConsulta();
-        listaDeEventos.add(new Evento(TipoModulo.ClientesYConexiones, 0, new Consulta(tipoConsulta, adminClientes.getTimeout()) , true ));
-    }
+        this.listaDeEventos = new PriorityQueue<>();
 
-    public SistemaPintoDB(){
+        //Módulos
+        this.adminClientes = new ModuloAdministradorDeClientesYConexiones(this.estadistico, this.estadisticoConsulta, this.listaDeEventos,  this.calculador, this.reloj, parametros[0], this.timeout);
+        this.adminProcesos = new ModuloAdministradorDeProcesos(this.estadistico, this.estadisticoConsulta, this.listaDeEventos,  this.calculador, this.reloj, this.timeout); //Solo 1 servidor
+        this.procesadorConsultas = new ModuloProcesadorDeConsultas(this.estadistico, this.estadisticoConsulta, this.listaDeEventos,  this.calculador, this.reloj, parametros[1], this.timeout);
+        this.adminDatos = new ModuloDeTransaccionesYAccesoADatos(this.estadistico, this.estadisticoConsulta, this.listaDeEventos,  this.calculador, this.reloj, parametros[2], this.timeout);
+        this.ejecutorSentencias = new ModuloEjecutorDeSentencias(this.estadistico, this.estadisticoConsulta, this.listaDeEventos,  this.calculador, this.reloj, parametros[3], this.timeout);
+
         TipoConsulta tipoConsulta = calculador.genMonteCarloConsulta();
-        listaDeEventos.add(new Evento(TipoModulo.ClientesYConexiones, 0, new Consulta(tipoConsulta, adminClientes.getTimeout()) , true ));
+        listaDeEventos.add(new Evento(TipoEvento.ENTRADA, TipoModulo.ClientesYConexiones, 0, new Consulta(tipoConsulta, this.timeout, this.estadisticoConsulta)));
     }
 
     public void setDuracionSimulacion(double duracionSimulacion){
@@ -39,16 +46,65 @@ public class SistemaPintoDB {
     public void simular(){
         reloj = 0.0; // segundos
         while(reloj < duracionSimulacion){
-            reloj = listaDeEventos.peek().getTiempoOcurrencia();
-            boolean esLlegada = listaDeEventos.peek().isLlegada();
-            TipoModulo tipoModulo = listaDeEventos.peek().getTipoModulo();
-
-            if(tipoModulo == TipoModulo.ClientesYConexiones && esLlegada)
-                adminClientes.procesarLlegada();
-            else if (tipoModulo ==  TipoModulo.AdministradorDeProcesos && esLlegada)
-                adminProcesos.procesarLlegada();
-            else if (tipoModulo == TipoModulo.AdministradorDeProcesos && !esLlegada)
-                adminProcesos.procesarSalida();
+            Evento eventoActual = listaDeEventos.poll();
+            eventoActual.getConsulta().setTiempoIngreso(this.reloj);
+            this.reloj = eventoActual.getTiempoOcurrencia();
+            switch(eventoActual.getTipoEvento()){
+                case ENTRADA:{
+                    switch(eventoActual.getTipoModulo()){
+                        case ClientesYConexiones:{
+                            adminClientes.procesarLlegada(eventoActual.getConsulta());
+                            break;
+                        }
+                        case AdministradorDeProcesos:{
+                            adminProcesos.procesarLlegada(eventoActual.getConsulta());
+                            break;
+                        }
+                        case ProcesadorDeConsultas:{
+                            procesadorConsultas.procesarLlegada(eventoActual.getConsulta());
+                            break;
+                        }
+                        case TransaccionYAccesoADatos:{
+                            adminDatos.procesarLlegada(eventoActual.getConsulta());
+                            break;
+                        }
+                        case EjecutorDeSentencias:{
+                            ejecutorSentencias.procesarLlegada(eventoActual.getConsulta());
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case SALIDA:{
+                    switch(eventoActual.getTipoModulo()){
+                        case ClientesYConexiones:{
+                            adminClientes.procesarSalida(eventoActual.getConsulta());
+                            break;
+                        }
+                        case AdministradorDeProcesos:{
+                            adminProcesos.procesarSalida(eventoActual.getConsulta());
+                            break;
+                        }
+                        case ProcesadorDeConsultas:{
+                            procesadorConsultas.procesarSalida(eventoActual.getConsulta());
+                            break;
+                        }
+                        case TransaccionYAccesoADatos:{
+                            adminDatos.procesarSalida(eventoActual.getConsulta());
+                            break;
+                        }
+                        case EjecutorDeSentencias:{
+                            ejecutorSentencias.procesarSalida(eventoActual.getConsulta());
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case TIMEOUT:{
+                    adminClientes.cerrarConexion(eventoActual.getConsulta());
+                    break;
+                }
+            }
         }
     }
 }

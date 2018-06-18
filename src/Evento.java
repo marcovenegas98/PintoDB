@@ -1,18 +1,14 @@
 public class Evento implements Comparable <Evento> {
     private TipoModulo tipoModulo;
+    private TipoEvento tipoEvento;
     private double tiempoOcurrencia;
     private Consulta consulta;
-    private boolean llegada;
 
-    public Evento(){
-
-    }
-
-    public Evento(TipoModulo tipoModulo, double tiempoOcurrencia, Consulta consulta, boolean llegada){
+    public Evento(TipoEvento tipoEvento, TipoModulo tipoModulo, double tiempoOcurrencia, Consulta consulta){
+        this.tipoEvento = tipoEvento;
         this.tipoModulo = tipoModulo;
         this.tiempoOcurrencia = tiempoOcurrencia;
         this.consulta = consulta;
-        this.llegada = llegada;
     }
 
     public int compareTo(Evento ev){
@@ -22,6 +18,14 @@ public class Evento implements Comparable <Evento> {
             return 1;
         else
             return -1;
+    }
+
+    public TipoEvento getTipoEvento() {
+        return tipoEvento;
+    }
+
+    public void setTipoEvento(TipoEvento tipoEvento) {
+        this.tipoEvento = tipoEvento;
     }
 
     public TipoModulo getTipoModulo() {
@@ -48,7 +52,5 @@ public class Evento implements Comparable <Evento> {
         this.consulta = consulta;
     }
 
-    public boolean isLlegada() {
-        return llegada;
-    }
+
 }

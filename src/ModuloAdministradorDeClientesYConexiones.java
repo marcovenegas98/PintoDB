@@ -1,39 +1,42 @@
-public class ModuloAdministradorDeClientesYConexiones extends Modulo {
-    private double timeout;
-    private int conexionesDescartadas;
-    private ModuloAdministradorDeProcesos moduloAdministradorDeProcesos;
-    private TipoConsulta tipoConsulta;
+import java.util.PriorityQueue;
 
-    public ModuloAdministradorDeClientesYConexiones(){
+public class ModuloAdministradorDeClientesYConexiones extends Modulo {
+    private int conexionesDescartadas;
+
+    public ModuloAdministradorDeClientesYConexiones(Estadistico estadistico, EstadisticoConsulta estadisticoConsulta, PriorityQueue<Evento> listaDeEventos, CalculadorValoresAleatorios calculador, double reloj, int k, double timeout){
+        super(estadistico, estadisticoConsulta, listaDeEventos, calculador, reloj, k, timeout);
         conexionesDescartadas = 0;
     }
 
-    void procesarLlegada(){
+    public void procesarLlegada(Consulta consulta){
         if(numeroServidores == 0){
             conexionesDescartadas++;
         }else{
-            generarLlegadaAdmProcesos();
             numeroServidores--;
+            generarLlegadaAdmProcesos(consulta);
         }
-        tipoConsulta = calculador.genMonteCarloConsulta();
         this.generarLlegadaAdmClientes();
     }
 
-    void procesarSalida(){
+    //Cuando sale de aquí, ya pasó por el resto de módulos.
+    void procesarSalida(Consulta consulta){
+        //Estadísticas.
         numeroServidores++;
     }
 
-    private void cerrarConexion(){
+
+    public void cerrarConexion(Consulta consulta){
 
     }
 
     private void generarLlegadaAdmClientes(){
-        double llegada = calculador.genValorExponencial(2); // 30 conexiones por min = 1 conex cada 2 seg
-        listaDeEventos.add(new Evento(TipoModulo.ClientesYConexiones,llegada + sistemaPintoDB.reloj, new Consulta(tipoConsulta, timeout) , true ));
+        double tiempo = calculador.genValorExponencial(2); // 30 conexiones por min = 1 conex cada 2 seg
+        TipoConsulta tipo = calculador.genMonteCarloConsulta();
+        listaDeEventos.add(new Evento(TipoEvento.ENTRADA, TipoModulo.ClientesYConexiones, this.reloj + tiempo, new Consulta(tipo, timeout, this.estadisticoConsulta)));
     }
 
-    private void generarLlegadaAdmProcesos(){
-        listaDeEventos.add(new Evento(TipoModulo.ProcesadorDeConsultas, sistemaPintoDB.reloj, new Consulta(tipoConsulta, timeout),true));
+    private void generarLlegadaAdmProcesos(Consulta c){
+        listaDeEventos.add(new Evento(TipoEvento.ENTRADA, TipoModulo.ProcesadorDeConsultas, this.reloj, c));
     }
 
     public double getTimeout(){
