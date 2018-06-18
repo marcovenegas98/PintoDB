@@ -7,18 +7,26 @@ public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
     }
 
     void procesarLlegada(Consulta consulta){
-        
+        consulta.setTiempoIngresoModulo(this.reloj);
+        estadisticoConsulta.incrementarConsultasRecibidas(2, consulta);
+        if(numeroServidores == 0){
+            consulta.setTiempoIngresoCola(this.reloj); //Ingresa a la cola
+            cola.add(consulta);
+        }else{
+            this.generarSalidaTAD(consulta);
+            numeroServidores--;
+        }
     }
 
     void procesarSalida(Consulta consulta){
 
     }
 
-    private void generarSalidaTAD(){
+    private void generarSalidaTAD(Consulta consulta){
 
     }
 
-    private void generarEntradaEjecSentencias(){
+    private void generarEntradaEjecSentencias(Consulta consulta){
 
     }
 }

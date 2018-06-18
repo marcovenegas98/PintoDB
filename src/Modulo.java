@@ -23,27 +23,5 @@ public abstract class Modulo {
 
     abstract void procesarLlegada(Consulta consulta);
     abstract void procesarSalida(Consulta consulta);
-    protected int getCasillaParaEstadistico(Consulta consulta){
-        int tipo = -1;
-        switch (consulta.getTipoConsulta()){
-            case DDL:{
-                tipo = 0;
-                break;
-            }
-            case SELECT:{
-                tipo = 1;
-                break;
-            }
 
-            case JOIN:{
-                tipo = 2;
-                break;
-            }
-            case UPDATE:{
-                tipo = 3;
-                break;
-            }
-        }
-        return tipo;
-    }
 }

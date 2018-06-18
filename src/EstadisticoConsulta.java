@@ -1,5 +1,15 @@
 public class EstadisticoConsulta {
 
+    /*
+     *  Modulo Administrador de Procesos -> 0
+     *  Modulo Procesador de Consultas -> 1
+     *  Modulo de Transacciones y acceso a Datos -> 2
+     *  Modulo Ejecutor de Sentencias -> 3
+     *
+     *  DDL
+     */
+
+
     private int[][] totalConsultasRecibidas;
     private double[][] tiempoTotalConsultas;
     private double[][] tiempoConsultas; //Tiempo promedio de cada consulta en cada módulo.
@@ -33,11 +43,36 @@ public class EstadisticoConsulta {
         return tiempoPromedio;
     }
 
-    public void incrementarConsultasRecibidas(int modulo, int consulta){
-        ++totalConsultasRecibidas[modulo][consulta];
+    public void incrementarConsultasRecibidas(int modulo, Consulta consulta){
+        ++totalConsultasRecibidas[modulo][getTipoConsulta(consulta)];
     }
 
-    public void incrementarTiempoConsulta(int modulo, int consulta, double tiempo){
-        tiempoTotalConsultas[modulo][consulta] += tiempo;
+    public void incrementarTiempoConsulta(int modulo, Consulta consulta, double tiempo){
+        tiempoTotalConsultas[modulo][getTipoConsulta(consulta)] += tiempo;
     }
+
+    private int getTipoConsulta(Consulta consulta){
+        int tipo = -1;
+        switch (consulta.getTipoConsulta()){
+            case DDL:{
+                tipo = 0;
+                break;
+            }
+            case SELECT:{
+                tipo = 1;
+                break;
+            }
+
+            case JOIN:{
+                tipo = 2;
+                break;
+            }
+            case UPDATE:{
+                tipo = 3;
+                break;
+            }
+        }
+        return tipo;
+    }
+
 }

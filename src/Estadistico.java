@@ -14,4 +14,5 @@ public class Estadistico {
     public void calcularTiempoSentencias(){
 
     }
+
 }
