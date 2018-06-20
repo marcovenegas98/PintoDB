@@ -1,23 +1,25 @@
 public class Consulta implements Comparable<Consulta>{
-    private TipoConsulta tipoConsulta;
+    private TipoConsulta tipoConsulta; //El tipo de sentencia de esta consulta
+    private TipoModulo tipoModulo; //El módulo en el que se encuentra esta consulta.
+    private boolean enCola;
     private boolean readOnly;
     private double tiempoIngreso;
-    private double tiempoSalida;
-    private double tiempoIngresoCola;
+    //private double tiempoSalida;
+    //private double tiempoIngresoCola;
     private double tiempoIngresoModulo;
-    private double tiempoRestante;
-    private double tiempoEnCola;
-    private double tiempoEnServicio;
-    private EstadisticoConsulta estadistico;
+    //private double tiempoEnCola;
+    //private double tiempoEnServicio;
+    //private EstadisticoConsulta estadistico;
     private int B;
 
-    public Consulta(TipoConsulta tipoConsulta, double tiempoRestante, EstadisticoConsulta estadistico){
+    public Consulta(TipoConsulta tipoConsulta){
         this.tipoConsulta = tipoConsulta;
         this.obtenerReadOnly();
-        this.tiempoRestante = tiempoRestante;
-        this.estadistico = estadistico;
-        this.tiempoEnCola = 0;
-        this.tiempoEnServicio = 0;
+        //this.estadistico = estadistico;
+        this.enCola = false;
+        this.B = 0;
+       // this.tiempoEnCola = 0;
+       // this.tiempoEnServicio = 0;
     }
 
     public int compareTo(Consulta otraConsulta){
@@ -57,15 +59,8 @@ public class Consulta implements Comparable<Consulta>{
         this.readOnly = readOnly;
     }
 
-    public double getTiempoRestante() {
-        return tiempoRestante;
-    }
 
-    public void setTiempoRestante(double tiempoRestante) {
-        this.tiempoRestante = tiempoRestante;
-    }
-
-    public double getTiempoEnCola() {
+    /*public double getTiempoEnCola() {
         return tiempoEnCola;
     }
 
@@ -79,7 +74,7 @@ public class Consulta implements Comparable<Consulta>{
 
     public void setTiempoEnServicio(double tiempoEnServicio) {
         this.tiempoEnServicio = tiempoEnServicio;
-    }
+    }*/
 
     public int getB() {
         return B;
@@ -97,7 +92,7 @@ public class Consulta implements Comparable<Consulta>{
         this.tiempoIngreso = tiempoIngreso;
     }
 
-    public double getTiempoSalida() {
+    /*public double getTiempoSalida() {
         return tiempoSalida;
     }
 
@@ -112,6 +107,7 @@ public class Consulta implements Comparable<Consulta>{
     public void setTiempoIngresoCola(double tiempoIngresoCola) {
         this.tiempoIngresoCola = tiempoIngresoCola;
     }
+    */
 
     public double getTiempoIngresoModulo() {
         return tiempoIngresoModulo;
@@ -119,5 +115,21 @@ public class Consulta implements Comparable<Consulta>{
 
     public void setTiempoIngresoModulo(double tiempoIngresoModulo) {
         this.tiempoIngresoModulo = tiempoIngresoModulo;
+    }
+
+    public TipoModulo getTipoModulo() {
+        return tipoModulo;
+    }
+
+    public void setTipoModulo(TipoModulo tipoModulo) {
+        this.tipoModulo = tipoModulo;
+    }
+
+    public boolean isEnCola() {
+        return enCola;
+    }
+
+    public void setEnCola(boolean enCola) {
+        this.enCola = enCola;
     }
 }

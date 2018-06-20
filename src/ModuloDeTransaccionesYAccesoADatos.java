@@ -1,5 +1,4 @@
 import java.util.PriorityQueue;
-import java.util.Iterator;
 public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
 
     private double tiempoCoordinacion;
@@ -8,8 +7,8 @@ public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
     private int DDLsEsperando;
     private double tiempoUltimaSalida;
 
-    public ModuloDeTransaccionesYAccesoADatos(Estadistico estadistico, EstadisticoConsulta estadisticoConsulta, PriorityQueue<Evento> listaDeEventos, CalculadorValoresAleatorios calculador, double reloj, int p, double timeout){
-        super(estadistico, estadisticoConsulta, listaDeEventos, calculador, reloj, p, timeout);
+    public ModuloDeTransaccionesYAccesoADatos(Estadistico estadistico, EstadisticoConsulta estadisticoConsulta, PriorityQueue<Evento> listaDeEventos, CalculadorValoresAleatorios calculador, double reloj, int p){
+        super(estadistico, estadisticoConsulta, listaDeEventos, calculador, reloj, p);
         this.cola = new PriorityQueue<>();
         this.DDLsEsperando = 0;
         this.tiempoUltimaSalida = this.reloj;
@@ -17,10 +16,12 @@ public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
     }
 
     void procesarLlegada(Consulta consulta){
+        consulta.setTipoModulo(TipoModulo.TransaccionYAccesoADatos);
         consulta.setTiempoIngresoModulo(this.reloj);
         estadisticoConsulta.incrementarConsultasRecibidas(2, consulta);
         if(numeroServidores == 0 || DDLsEsperando > 0){ //Si llega un proceso mientras se esta procesando un DDL se mete a la cola
-            consulta.setTiempoIngresoCola(this.reloj); //Ingresa a la cola
+            //consulta.setTiempoIngresoCola(this.reloj); //Ingresa a la cola
+            consulta.setEnCola(true);
             cola.add(consulta);
         }else{
             this.generarSalidaTAD(consulta);
@@ -31,25 +32,22 @@ public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
     void procesarSalida(Consulta consulta){
         double tiempoTranscurrido = this.reloj-consulta.getTiempoIngresoModulo();
         estadisticoConsulta.incrementarTiempoConsulta(2, consulta, tiempoTranscurrido);
-        double tiempoRestante = consulta.getTiempoRestante() - tiempoTranscurrido;
-        consulta.setTiempoRestante(tiempoRestante);
+        //double tiempoRestante = consulta.getTiempoRestante() - tiempoTranscurrido;
+        //consulta.setTiempoRestante(tiempoRestante);
 
         if(consulta.getTipoConsulta() == TipoConsulta.DDL){
             DDLsEsperando--;
         }
         if(cola.size() > 0){ //Si hay gente en la cola.
             Consulta otraConsulta = cola.poll(); //Saco a otra consulta de la cola
-            otraConsulta.setTiempoEnCola(this.reloj-otraConsulta.getTiempoIngresoCola());
+            otraConsulta.setEnCola(false); //Cuando se saca de la cola, se desmarca el booleano.
+            //otraConsulta.setTiempoEnCola(this.reloj-otraConsulta.getTiempoIngresoCola());
             generarSalidaTAD(otraConsulta);
         }else{
             numeroServidores++;
         }
 
-        if(tiempoRestante <= 0){ //timeout
-            this.listaDeEventos.add(new Evento(TipoEvento.TIMEOUT, TipoModulo.ClientesYConexiones, this.reloj, consulta));
-        }else {
-            generarEntradaEjecSentencias(consulta);
-        }
+        generarEntradaEjecSentencias(consulta);
     }
 
     private void generarSalidaTAD(Consulta consulta){
@@ -64,7 +62,7 @@ public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
         }
 
         double tiempoEnServicio = tiempoCoordinacion + tiempoCargaBloques;
-        consulta.setTiempoEnServicio(tiempoEnServicio);
+        //consulta.setTiempoEnServicio(tiempoEnServicio);
         double tiempoOcurrencia = tiempoEnServicio + this.reloj;
         if(consulta.getTipoConsulta() == TipoConsulta.DDL){ //Si la consulta que va a salir es DDL
             DDLsEsperando++; //Una DDL más esperando para salir.
