@@ -16,6 +16,7 @@ public class ModuloProcesadorDeConsultas extends Modulo {
             //consulta.setTiempoIngresoCola(this.reloj); //Ingresa a la cola
             consulta.setEnCola(true);
             cola.add(consulta);
+
         }else{
             this.generarSalidaProcConsultas(consulta);
             numeroServidores--;

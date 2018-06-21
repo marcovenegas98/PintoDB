@@ -1,6 +1,7 @@
 public class Estadistico {
 
     private int[] tamanosAcumuladosDeColasPorModulo = new int[4]; //Tamano de la cola en cada módulo.
+    private int[] numeroEntradasPorModulo = new int[4];
     private int conexionesDescartadas;
     private int numeroCorridas;
 
@@ -19,6 +20,8 @@ public class Estadistico {
         return tamanoPromedioDeColaPorModulo;
     }
 
+    public void incrementarEntradasPorModulo(int i){numeroEntradasPorModulo[i]++;}
+
     public void incrementarNumeroCorridas(){
         ++numeroCorridas;
     }
@@ -31,11 +34,8 @@ public class Estadistico {
         this.conexionesDescartadas = conexionesDescartadas;
     }
 
-    public void incrementarTamanosAcumuladosDeColasPorModulo(int[] tamanos){
-        for(int i = 0; i < 4 ; ++i){
-            tamanosAcumuladosDeColasPorModulo[i] += tamanos[i];
-        }
-
+    public void incrementarTamanosAcumuladosDeColasPorModulo(int i, int tamCola){
+            tamanosAcumuladosDeColasPorModulo[i] += tamCola;
     }
 
 }

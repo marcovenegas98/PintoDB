@@ -64,7 +64,7 @@ public class ModuloAdministradorDeClientesYConexiones extends Modulo {
     private void generarLlegadaAdmProcesos(Consulta c){
         //Se genera la entrada en el mismo tiempo de reloj pues este método solo se llama cuando se procesa una salida y el tiempo
         //de paso de una consulta de un módulo a otro es cero.
-        listaDeEventos.add(new Evento(TipoEvento.ENTRADA, TipoModulo.ProcesadorDeConsultas, this.reloj, c));
+        listaDeEventos.add(new Evento(TipoEvento.ENTRADA, TipoModulo.AdministradorDeProcesos, this.reloj, c));
     }
 
     public int getConexionesDescartadas(){

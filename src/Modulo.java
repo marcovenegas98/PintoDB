@@ -22,8 +22,10 @@ public abstract class Modulo {
     public Queue<Consulta> getCola(){
         return this.cola;
     }
+    public void setReloj(double rel){ this.reloj = rel;}
 
     abstract void procesarLlegada(Consulta consulta);
     abstract void procesarSalida(Consulta consulta);
+
 
 }

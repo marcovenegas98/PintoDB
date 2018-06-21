@@ -41,14 +41,14 @@ public class ModuloEjecutorDeSentencias extends Modulo {
 
     }
 
-    private void generarSalidaEjecSentencias(Consulta consulta){
+    private void generarSalidaEjecSentencias(Consulta consulta) {
         int bloques = consulta.getB();
         int milisEjec = bloques * bloques;
-        double tiempoEjec = milisEjec / 1000; //Convierto de mili segundos a segundos.
+        double tiempoEjec = (milisEjec / 1000); //Convierto de mili segundos a segundos.
         double tiempoActualización = 0.0;
-        if(consulta.getTipoConsulta() == TipoConsulta.DDL){
+        if (consulta.getTipoConsulta() == TipoConsulta.DDL) {
             tiempoActualización = 0.5;
-        }else if(consulta.getTipoConsulta() == TipoConsulta.UPDATE){
+        } else if (consulta.getTipoConsulta() == TipoConsulta.UPDATE) {
             tiempoActualización = 1;
         }
         double tiempoEnServicio = tiempoEjec + tiempoActualización;
