@@ -18,7 +18,6 @@ public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
     void procesarLlegada(Consulta consulta){
         consulta.setTipoModulo(TipoModulo.TransaccionYAccesoADatos);
         consulta.setTiempoIngresoModulo(this.reloj);
-        estadisticoConsulta.incrementarConsultasRecibidas(2, consulta);
         if(numeroServidores == 0 || DDLsEsperando > 0){ //Si llega un proceso mientras se esta procesando un DDL se mete a la cola
             //consulta.setTiempoIngresoCola(this.reloj); //Ingresa a la cola
             consulta.setEnCola(true);
@@ -30,6 +29,7 @@ public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
     }
 
     void procesarSalida(Consulta consulta){
+        estadisticoConsulta.incrementarConsultasRecibidas(2, consulta);
         double tiempoTranscurrido = this.reloj-consulta.getTiempoIngresoModulo();
         estadisticoConsulta.incrementarTiempoConsulta(2, consulta, tiempoTranscurrido);
         //double tiempoRestante = consulta.getTiempoRestante() - tiempoTranscurrido;

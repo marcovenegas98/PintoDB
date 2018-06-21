@@ -44,7 +44,7 @@ public class Controlador {
         this.sistema = new SistemaPintoDB(this.estadistico, this.estadisticoConsulta, this.parametros, this.timeout, this.tiempoMax);
     }
 
-    public void pedirInformación(){
+    public void pedirInformacion(){
         int vecesCorridas;
         double maxTiempo;
         int [] param = new int[4];
@@ -88,17 +88,44 @@ public class Controlador {
     }
 
     public static void main(String[] args){
-
-
-
         Controlador controlador = new Controlador();
         //controlador.crearSistemaAutomático();
-        controlador.pedirInformación();
+        controlador.pedirInformacion();
+        // CREAR WHILE DE NUMERO DE CORRIDAS
         controlador.ejecutar();
-
+        System.out.println("Se acabo la simulacion\n\t\t\t ESTADISTICAS:");
         //PriorityQueue<Integer> cola = new PriorityQueue<>();
         //System.out.println(cola.size());
-
-
+        int[] tamanoPromedioColaPorModulo = controlador.estadistico.calcularLQs();
+        System.out.println("\n");
+        System.out.println("Longitud cola promedio modulo Administrador de Procesos :" + tamanoPromedioColaPorModulo[0]);
+        System.out.println("Longitud cola promedio modulo Procesador de Consultas :" + tamanoPromedioColaPorModulo[1]);
+        System.out.println("Longitud cola promedio modulo Transaccion y Acesso a Datos :" + tamanoPromedioColaPorModulo[2]);
+        System.out.println("Longitud cola promedio modulo Ejecutor de Sentencias :" + tamanoPromedioColaPorModulo[3]);
+        System.out.println("\n");
+        System.out.println("Tiempo promedio de vida de una conexion: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeVida());
+        System.out.println("\n");
+        System.out.println("Conexiones Descartadas: " + controlador.estadistico.getConexionesDescartadas());
+        System.out.println("\n");
+        System.out.println("Tiempo promedio de sentencia DDL en modulo Administrador de Clientes y Conexiones: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(4,0));
+        System.out.println("Tiempo promedio de sentencia SELECT en modulo Administrador de Clientes y Conexiones: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(4,1));
+        System.out.println("Tiempo promedio de sentencia JOIN en modulo Administrador de Clientes y Conexiones: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(4,2));
+        System.out.println("Tiempo promedio de sentencia UPDATE en modulo Administrador de Clientes y Conexiones: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(4,3));
+        System.out.println("Tiempo promedio de sentencia DDL en modulo Administrador de Procesos: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(0,0));
+        System.out.println("Tiempo promedio de sentencia SELECT en modulo Administrador de Procesos: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(0,1));
+        System.out.println("Tiempo promedio de sentencia JOIN en modulo Administrador de Procesos: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(0,2));
+        System.out.println("Tiempo promedio de sentencia UPDATE en modulo Administrador de Procesos: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(0,3));
+        System.out.println("Tiempo promedio de sentencia DDL en modulo Procesador de Consultas: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(1,0));
+        System.out.println("Tiempo promedio de sentencia SELECT en modulo Procesador de Consultas: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(1,1));
+        System.out.println("Tiempo promedio de sentencia JOIN en modulo Procesador de Consultas: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(1,2));
+        System.out.println("Tiempo promedio de sentencia UPDATE en modulo Procesador de Consultas: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(1,3));
+        System.out.println("Tiempo promedio de sentencia DDL en modulo Transaccion y Acceso a Datos: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(2,0));
+        System.out.println("Tiempo promedio de sentencia SELECT en modulo Transaccion y Acceso a Datos: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(2,1));
+        System.out.println("Tiempo promedio de sentencia JOIN en modulo Transaccion y Acceso a Datos: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(2,2));
+        System.out.println("Tiempo promedio de sentencia UPDATE en modulo Transaccion y Acceso a Datos: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(2,3));
+        System.out.println("Tiempo promedio de sentencia DDL en modulo Ejecutor de Sentencias: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(3,0));
+        System.out.println("Tiempo promedio de sentencia SELECT en modulo Ejecutor de Sentencias: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(3,1));
+        System.out.println("Tiempo promedio de sentencia JOIN en modulo Ejecutor de Sentencias: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(3,2));
+        System.out.println("Tiempo promedio de sentencia UPDATE en modulo Ejecutor de Sentencias: " + controlador.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo(3,3));
     }
 }

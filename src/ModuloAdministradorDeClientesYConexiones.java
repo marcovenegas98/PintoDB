@@ -17,8 +17,7 @@ public class ModuloAdministradorDeClientesYConexiones extends Modulo {
             conexionesDescartadas++;
         }else{
             numeroServidores--;
-            this.estadisticoConsulta.incrementarConsultasIngresadasAlSistema();
-            this.estadisticoConsulta.incrementarConsultasRecibidas(4, consulta);
+
             generarLlegadaAdmProcesos(consulta);
         }
         this.generarLlegadaAdmClientes();
@@ -26,10 +25,18 @@ public class ModuloAdministradorDeClientesYConexiones extends Modulo {
 
     //Cuando sale de aquí, ya pasó por el resto de módulos.
     void procesarSalida(Consulta consulta){
-        double tiempoSubida = consulta.getB()/64; //Calcula el tiempo que dura en subirse el resultado.
+        double tiempoSubida = (double)consulta.getB()/64.00; //Calcula el tiempo que dura en subirse el resultado.
+
+        this.estadisticoConsulta.incrementarConsultasRecibidas(4, consulta);
+
+        this.estadisticoConsulta.incrementarConsultasProcesadasDelSistema();
+
         this.estadisticoConsulta.incrementarTiempoConsulta(4, consulta, tiempoSubida); //Actualiza las estadísticas de la consulta.
+
         double tiempoDeVida = this.reloj-consulta.getTiempoIngreso();
+
         tiempoDeVida += tiempoSubida; //Se le suma lo que durará en subirse el resultado.
+
         this.estadisticoConsulta.incrementarTiempoAcumuladoDeVida(tiempoDeVida);
 
         numeroServidores++;
@@ -45,6 +52,7 @@ public class ModuloAdministradorDeClientesYConexiones extends Modulo {
             //Si no estaba en cola, la salida del módulo ocurrió primero que este timeout, entonces ya se actualizaron las estadísticas
         }
         double tiempoDeVida = this.reloj-consulta.getTiempoIngreso();
+        this.estadisticoConsulta.incrementarConsultasProcesadasDelSistema();
         this.estadisticoConsulta.incrementarTiempoAcumuladoDeVida(tiempoDeVida);
 
         listaDeEventos.removeIf((Evento ev) -> ev.getConsulta() == consulta); //Saca de la lista de eventos cualquier otro evento con esta misma consulta.

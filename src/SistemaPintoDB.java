@@ -69,7 +69,6 @@ public class SistemaPintoDB {
             this.reloj = eventoActual.getTiempoOcurrencia(); //Se actualiza el reloj.
             System.out.println("\n");
         }
-        System.out.println("Se acabo la simulacion");
         this.estadistico.setConexionesDescartadas(adminClientes.getConexionesDescartadas()); //Actualizo las conexiones descartadas.
        //this.estadistico.incrementarTamanosAcumuladosDeColasPorModulo(this.getTamanoColaPorModulo());
     }

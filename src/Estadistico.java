@@ -15,10 +15,11 @@ public class Estadistico {
     public int[] calcularLQs(){
         int[] tamanoPromedioDeColaPorModulo = new int[4];
         for(int i = 0; i < 4; ++i){
-            tamanoPromedioDeColaPorModulo[i] = tamanosAcumuladosDeColasPorModulo[i] / numeroCorridas;
+            tamanoPromedioDeColaPorModulo[i] = tamanosAcumuladosDeColasPorModulo[i] / numeroEntradasPorModulo[i];
         }
         return tamanoPromedioDeColaPorModulo;
     }
+
 
     public void incrementarEntradasPorModulo(int i){numeroEntradasPorModulo[i]++;}
 

@@ -11,7 +11,7 @@ public class ModuloEjecutorDeSentencias extends Modulo {
     void procesarLlegada(Consulta consulta){
         consulta.setTipoModulo(TipoModulo.EjecutorDeSentencias);
         consulta.setTiempoIngresoModulo(this.reloj);
-        estadisticoConsulta.incrementarConsultasRecibidas(3, consulta);
+
         if(numeroServidores == 0){
             //consulta.setTiempoIngresoCola(this.reloj); //Ingresa a la cola
             consulta.setEnCola(true);
@@ -23,6 +23,7 @@ public class ModuloEjecutorDeSentencias extends Modulo {
     }
 
     void procesarSalida(Consulta consulta){
+        estadisticoConsulta.incrementarConsultasRecibidas(3, consulta);
         double tiempoTranscurrido = this.reloj-consulta.getTiempoIngresoModulo();
         estadisticoConsulta.incrementarTiempoConsulta(3, consulta, tiempoTranscurrido);
         //double tiempoRestante = consulta.getTiempoRestante() - tiempoTranscurrido;
@@ -43,15 +44,15 @@ public class ModuloEjecutorDeSentencias extends Modulo {
 
     private void generarSalidaEjecSentencias(Consulta consulta) {
         int bloques = consulta.getB();
-        int milisEjec = bloques * bloques;
-        double tiempoEjec = (milisEjec / 1000); //Convierto de mili segundos a segundos.
-        double tiempoActualización = 0.0;
+        double milisEjec = (double)(bloques * bloques); // cast
+        double tiempoEjec = (milisEjec / 1000.00); //Convierto de mili segundos a segundos.
+        double tiempoActualizacion = 0.0;
         if (consulta.getTipoConsulta() == TipoConsulta.DDL) {
-            tiempoActualización = 0.5;
+            tiempoActualizacion = 0.5;
         } else if (consulta.getTipoConsulta() == TipoConsulta.UPDATE) {
-            tiempoActualización = 1;
+            tiempoActualizacion = 1;
         }
-        double tiempoEnServicio = tiempoEjec + tiempoActualización;
+        double tiempoEnServicio = tiempoEjec + tiempoActualizacion;
         //consulta.setTiempoEnServicio(tiempoEnServicio);
         double tiempoOcurrencia = tiempoEnServicio + this.reloj;
 

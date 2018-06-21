@@ -13,7 +13,7 @@ public class EstadisticoConsulta {
      *  UPDATE -> 3
      */
 
-    private int consultasIngresadasAlSistema;
+    private int consultasProcesadasDelSistema;
     private double tiempoAcumuladoDeVida;
     private int[][] totalConsultasRecibidas;
     private double[][] tiempoTotalConsultas;
@@ -49,12 +49,12 @@ public class EstadisticoConsulta {
     }
 
     public double calcularTiempoPromedioDeVida(){
-        double tiempoPromedioDeVida = tiempoAcumuladoDeVida / consultasIngresadasAlSistema;
+        double tiempoPromedioDeVida = tiempoAcumuladoDeVida / consultasProcesadasDelSistema;
         return tiempoPromedioDeVida;
     }
 
-    public void incrementarConsultasIngresadasAlSistema(){
-        ++consultasIngresadasAlSistema;
+    public void incrementarConsultasProcesadasDelSistema(){
+        ++consultasProcesadasDelSistema;
     }
 
     public void incrementarTiempoAcumuladoDeVida(double tiempo){

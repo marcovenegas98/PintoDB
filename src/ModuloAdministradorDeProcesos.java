@@ -11,7 +11,6 @@ public class ModuloAdministradorDeProcesos extends Modulo {
     void procesarLlegada(Consulta consulta){
         consulta.setTipoModulo(TipoModulo.AdministradorDeProcesos); //Consulta en el módulo admin de procesos.
         consulta.setTiempoIngresoModulo(this.reloj); //Ingresó al módulo en este momento.
-        estadisticoConsulta.incrementarConsultasRecibidas(0, consulta); //Una consulta más recibida en este módulo.
         if(numeroServidores == 0){
             //consulta.setTiempoIngresoCola(this.reloj); //Ingresa a la cola
             consulta.setEnCola(true); //Cuando se mete a la cola, se marca el booleano
@@ -23,6 +22,7 @@ public class ModuloAdministradorDeProcesos extends Modulo {
     }
 
     void procesarSalida(Consulta consulta){
+        estadisticoConsulta.incrementarConsultasRecibidas(0, consulta); //Una consulta más recibida en este módulo.
         double tiempoTranscurrido = this.reloj-consulta.getTiempoIngresoModulo();
         estadisticoConsulta.incrementarTiempoConsulta(0, consulta, tiempoTranscurrido);
         //double tiempoRestante = consulta.getTiempoRestante() - tiempoTranscurrido;

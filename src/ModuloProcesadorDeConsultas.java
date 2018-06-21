@@ -11,7 +11,7 @@ public class ModuloProcesadorDeConsultas extends Modulo {
     void procesarLlegada(Consulta consulta){
         consulta.setTipoModulo(TipoModulo.ProcesadorDeConsultas);
         consulta.setTiempoIngresoModulo(this.reloj);
-        estadisticoConsulta.incrementarConsultasRecibidas(1, consulta);
+
         if(numeroServidores == 0){
             //consulta.setTiempoIngresoCola(this.reloj); //Ingresa a la cola
             consulta.setEnCola(true);
@@ -24,6 +24,7 @@ public class ModuloProcesadorDeConsultas extends Modulo {
     }
 
     void procesarSalida(Consulta consulta){
+        estadisticoConsulta.incrementarConsultasRecibidas(1, consulta);
         double tiempoTranscurrido = this.reloj-consulta.getTiempoIngresoModulo();
         estadisticoConsulta.incrementarTiempoConsulta(1, consulta, tiempoTranscurrido);
         //double tiempoRestante = consulta.getTiempoRestante() - tiempoTranscurrido;
