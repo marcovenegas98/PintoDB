@@ -1,4 +1,5 @@
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 public class ModuloAdministradorDeClientesYConexiones extends Modulo {
@@ -10,6 +11,7 @@ public class ModuloAdministradorDeClientesYConexiones extends Modulo {
         this.timeout = timeout;
         this.conexionesDescartadas = 0;
     }
+    
 
     public void procesarLlegada(Consulta consulta){
         consulta.setTipoModulo(TipoModulo.ClientesYConexiones); //La consulta se encuentra en este módulo.
@@ -78,4 +80,9 @@ public class ModuloAdministradorDeClientesYConexiones extends Modulo {
     public int getConexionesDescartadas(){
         return conexionesDescartadas;
     }
+    
+    public void setConexionesDescartadas(int conexionesDescartadas){
+        this.conexionesDescartadas = conexionesDescartadas;
+    }
 }
+

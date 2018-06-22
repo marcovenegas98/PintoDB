@@ -2,20 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3f4b925-f2f2-4aa9-bc32-84d26e9ef0c6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/Consulta.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/Evento.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/Controlador.class" afterPath="$PROJECT_DIR$/out/production/TPIO/Controlador.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/Estadistico.class" afterPath="$PROJECT_DIR$/out/production/TPIO/Estadistico.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/EstadisticoConsulta.class" afterPath="$PROJECT_DIR$/out/production/TPIO/EstadisticoConsulta.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/Evento.class" afterPath="$PROJECT_DIR$/out/production/TPIO/Evento.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/Modulo.class" afterPath="$PROJECT_DIR$/out/production/TPIO/Modulo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/ModuloAdministradorDeClientesYConexiones.class" afterPath="$PROJECT_DIR$/out/production/TPIO/ModuloAdministradorDeClientesYConexiones.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/ModuloAdministradorDeProcesos.class" afterPath="$PROJECT_DIR$/out/production/TPIO/ModuloAdministradorDeProcesos.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/ModuloDeTransaccionesYAccesoADatos.class" afterPath="$PROJECT_DIR$/out/production/TPIO/ModuloDeTransaccionesYAccesoADatos.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/ModuloEjecutorDeSentencias.class" afterPath="$PROJECT_DIR$/out/production/TPIO/ModuloEjecutorDeSentencias.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/ModuloProcesadorDeConsultas.class" afterPath="$PROJECT_DIR$/out/production/TPIO/ModuloProcesadorDeConsultas.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/SistemaPintoDB$1.class" afterPath="$PROJECT_DIR$/out/production/TPIO/SistemaPintoDB$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/SistemaPintoDB.class" afterPath="$PROJECT_DIR$/out/production/TPIO/SistemaPintoDB.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Consulta.java" afterPath="$PROJECT_DIR$/src/Consulta.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CalculadorValoresAleatorios.java" afterPath="$PROJECT_DIR$/src/CalculadorValoresAleatorios.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controlador.java" afterPath="$PROJECT_DIR$/src/Controlador.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Estadistico.java" afterPath="$PROJECT_DIR$/src/Estadistico.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EstadisticoConsulta.java" afterPath="$PROJECT_DIR$/src/EstadisticoConsulta.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Evento.java" afterPath="$PROJECT_DIR$/src/Evento.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Interfaz.java" afterPath="$PROJECT_DIR$/src/Interfaz.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Modulo.java" afterPath="$PROJECT_DIR$/src/Modulo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ModuloAdministradorDeClientesYConexiones.java" afterPath="$PROJECT_DIR$/src/ModuloAdministradorDeClientesYConexiones.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ModuloAdministradorDeProcesos.java" afterPath="$PROJECT_DIR$/src/ModuloAdministradorDeProcesos.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ModuloDeTransaccionesYAccesoADatos.java" afterPath="$PROJECT_DIR$/src/ModuloDeTransaccionesYAccesoADatos.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ModuloEjecutorDeSentencias.java" afterPath="$PROJECT_DIR$/src/ModuloEjecutorDeSentencias.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ModuloProcesadorDeConsultas.java" afterPath="$PROJECT_DIR$/src/ModuloProcesadorDeConsultas.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaPintoDB.java" afterPath="$PROJECT_DIR$/src/SistemaPintoDB.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -27,14 +33,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Controlador.java" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Controlador.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controlador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+            <state relative-caret-position="870">
+              <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <marker date="1529653614000" expanded="true" signature="11634:11639" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -43,13 +49,10 @@
       <file leaf-file-name="EstadisticoConsulta.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/EstadisticoConsulta.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="52" column="36" lean-forward="false" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+            <state relative-caret-position="780">
+              <caret line="105" column="36" lean-forward="false" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="36" />
               <folding>
-                <element signature="e#1820#1821#0" expanded="true" />
-                <element signature="e#1866#1867#0" expanded="true" />
-                <element signature="e#1932#1933#0" expanded="true" />
-                <element signature="e#1979#1980#0" expanded="true" />
+                <marker date="1529653776000" expanded="true" signature="3606:3614" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -58,7 +61,7 @@
       <file leaf-file-name="Evento.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Evento.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="79">
+            <state relative-caret-position="210">
               <caret line="14" column="118" lean-forward="false" selection-start-line="14" selection-start-column="118" selection-end-line="14" selection-end-column="118" />
               <folding />
             </state>
@@ -68,8 +71,8 @@
       <file leaf-file-name="ModuloAdministradorDeClientesYConexiones.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ModuloAdministradorDeClientesYConexiones.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="55" column="50" lean-forward="false" selection-start-line="55" selection-start-column="50" selection-end-line="55" selection-end-column="50" />
+            <state relative-caret-position="703">
+              <caret line="65" column="50" lean-forward="false" selection-start-line="65" selection-start-column="50" selection-end-line="65" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -80,10 +83,10 @@
       <file leaf-file-name="SistemaPintoDB.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SistemaPintoDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="63" column="41" lean-forward="false" selection-start-line="63" selection-start-column="41" selection-end-line="63" selection-end-column="41" />
+            <state relative-caret-position="1260">
+              <caret line="84" column="41" lean-forward="false" selection-start-line="84" selection-start-column="41" selection-end-line="84" selection-end-column="41" />
               <folding>
-                <marker date="1529461109000" expanded="true" signature="3596:3602" ph="{}" />
+                <marker date="1529653530000" expanded="true" signature="11153:11160" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -92,7 +95,7 @@
       <file leaf-file-name="Modulo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Modulo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="103">
               <caret line="7" column="32" lean-forward="false" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -101,16 +104,26 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Interfaz.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Interfaz.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-12617">
+              <caret line="349" column="76" lean-forward="true" selection-start-line="349" selection-start-column="76" selection-end-line="349" selection-end-column="76" />
+              <folding>
+                <element signature="e#0#77541#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Estadistico.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Estadistico.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+            <state relative-caret-position="720">
+              <caret line="48" column="25" lean-forward="false" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
               <folding>
-                <element signature="e#697#698#0" expanded="true" />
-                <element signature="e#729#730#0" expanded="true" />
-                <element signature="e#773#774#0" expanded="true" />
-                <element signature="e#817#818#0" expanded="true" />
+                <marker date="1529654230000" expanded="true" signature="2601:2608" ph="{...}" />
+                <marker date="1529654230000" expanded="true" signature="2602:2608" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -182,10 +195,11 @@
         <option value="$PROJECT_DIR$/src/ModuloDeTransaccionesYAccesoADatos.java" />
         <option value="$PROJECT_DIR$/src/ModuloEjecutorDeSentencias.java" />
         <option value="$PROJECT_DIR$/src/Consulta.java" />
-        <option value="$PROJECT_DIR$/src/ModuloAdministradorDeClientesYConexiones.java" />
         <option value="$PROJECT_DIR$/src/SistemaPintoDB.java" />
         <option value="$PROJECT_DIR$/src/Estadistico.java" />
         <option value="$PROJECT_DIR$/src/Controlador.java" />
+        <option value="$PROJECT_DIR$/src/ModuloAdministradorDeClientesYConexiones.java" />
+        <option value="$PROJECT_DIR$/src/Interfaz.java" />
       </list>
     </option>
   </component>
@@ -196,10 +210,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="4" />
-    <option name="y" value="23" />
-    <option name="width" value="729" />
-    <option name="height" value="777" />
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -235,10 +247,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -255,6 +265,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -392,11 +404,13 @@
       <workItem from="1528932819232" duration="156000" />
       <workItem from="1529270834788" duration="22139000" />
       <workItem from="1529351989345" duration="24049000" />
+      <workItem from="1529621610257" duration="609000" />
+      <workItem from="1529654492140" duration="103000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51421000" />
+    <option name="totallyTimeSpent" value="52133000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -410,7 +424,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -444,14 +458,194 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Controlador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <marker date="1529653614000" expanded="true" signature="11634:11639" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EstadisticoConsulta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="52" column="36" lean-forward="false" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+          <folding>
+            <marker date="1529653776000" expanded="true" signature="3606:3614" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Evento.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="118" lean-forward="false" selection-start-line="14" selection-start-column="118" selection-end-line="14" selection-end-column="118" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaPintoDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="72" column="41" lean-forward="false" selection-start-line="72" selection-start-column="41" selection-end-line="72" selection-end-column="41" />
+          <folding>
+            <marker date="1529653530000" expanded="true" signature="11153:11160" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modulo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="32" lean-forward="false" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Estadistico.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="26" column="25" lean-forward="false" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+          <folding>
+            <marker date="1529654230000" expanded="true" signature="2601:2608" ph="{...}" />
+            <marker date="1529654230000" expanded="true" signature="2602:2608" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Consulta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="10" lean-forward="false" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+          <folding>
+            <marker date="1529459952000" expanded="false" signature="2180:2191" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="2211:2217" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="2271:2282" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="2315:2321" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="2362:2373" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="2397:2403" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="2465:2476" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="2517:2523" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="2940:2951" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="2984:2990" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="3032:3043" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="3068:3074" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="3138:3149" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="3192:3198" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ModuloAdministradorDeClientesYConexiones.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="63" column="50" lean-forward="false" selection-start-line="63" selection-start-column="50" selection-end-line="63" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controlador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1529653614000" expanded="true" signature="11634:11639" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Evento.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="118" lean-forward="false" selection-start-line="14" selection-start-column="118" selection-end-line="14" selection-end-column="118" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EstadisticoConsulta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="52" column="36" lean-forward="false" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+          <folding>
+            <marker date="1529653776000" expanded="true" signature="3606:3614" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ModuloAdministradorDeClientesYConexiones.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="55" column="50" lean-forward="false" selection-start-line="55" selection-start-column="50" selection-end-line="55" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaPintoDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="63" column="41" lean-forward="false" selection-start-line="63" selection-start-column="41" selection-end-line="63" selection-end-column="41" />
+          <folding>
+            <marker date="1529653530000" expanded="true" signature="11153:11160" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modulo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="32" lean-forward="false" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Estadistico.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+          <folding>
+            <marker date="1529654230000" expanded="true" signature="2601:2608" ph="{...}" />
+            <marker date="1529654230000" expanded="true" signature="2602:2608" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Consulta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="10" lean-forward="false" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+          <folding>
+            <marker date="1529459952000" expanded="false" signature="2180:2191" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="2211:2217" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="2271:2282" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="2315:2321" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="2362:2373" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="2397:2403" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="2465:2476" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="2517:2523" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="2940:2951" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="2984:2990" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="3032:3043" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="3068:3074" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="3138:3149" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="3192:3198" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CalculadorValoresAleatorios.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-          <folding>
-            <element signature="e#1538#1539#0" expanded="true" />
-            <element signature="e#1591#1592#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -460,7 +654,7 @@
         <state relative-caret-position="255">
           <caret line="17" column="55" lean-forward="false" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
           <folding>
-            <marker date="1529461109000" expanded="true" signature="3596:3602" ph="{}" />
+            <marker date="1529653530000" expanded="true" signature="11153:11160" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -469,7 +663,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1529653614000" expanded="true" signature="11634:11639" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -477,10 +673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#1538#1539#0" expanded="true" />
-            <element signature="e#1591#1592#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -488,7 +680,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="68" lean-forward="false" selection-start-line="0" selection-start-column="68" selection-end-line="0" selection-end-column="68" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -496,9 +690,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="62" lean-forward="false" selection-start-line="0" selection-start-column="62" selection-end-line="0" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -526,7 +718,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="54" lean-forward="false" selection-start-line="0" selection-start-column="54" selection-end-line="0" selection-end-column="54" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -543,10 +737,20 @@
         <state relative-caret-position="0">
           <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
           <folding>
-            <element signature="e#3250#3251#0" expanded="false" />
-            <element signature="e#3292#3293#0" expanded="false" />
-            <element signature="e#3362#3363#0" expanded="true" />
-            <element signature="e#3424#3425#0" expanded="true" />
+            <marker date="1529459952000" expanded="false" signature="2180:2191" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="2211:2217" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="2271:2282" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="2315:2321" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="2362:2373" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="2397:2403" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="2465:2476" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="2517:2523" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="2940:2951" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="2984:2990" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="3032:3043" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="3068:3074" ph=" }" />
+            <marker date="1529459952000" expanded="false" signature="3138:3149" ph=" { " />
+            <marker date="1529459952000" expanded="false" signature="3192:3198" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -555,7 +759,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="32" lean-forward="false" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
-          <folding />
+          <folding>
+            <marker date="1529653776000" expanded="true" signature="3606:3614" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -564,15 +770,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interfaz.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -580,7 +777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -588,7 +784,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="28" lean-forward="false" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -596,7 +791,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="4" lean-forward="true" selection-start-line="2" selection-start-column="4" selection-end-line="5" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -604,10 +798,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
           <caret line="53" column="8" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
-          <folding>
-            <element signature="e#1538#1539#0" expanded="true" />
-            <element signature="e#1591#1592#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -615,7 +805,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="545">
           <caret line="135" column="15" lean-forward="false" selection-start-line="135" selection-start-column="15" selection-end-line="135" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -623,9 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="568">
           <caret line="116" column="21" lean-forward="false" selection-start-line="116" selection-start-column="21" selection-end-line="116" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#3675#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -667,6 +853,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Estadistico.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="48" column="25" lean-forward="false" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+          <folding>
+            <marker date="1529654230000" expanded="true" signature="2601:2608" ph="{...}" />
+            <marker date="1529654230000" expanded="true" signature="2602:2608" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaPintoDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="84" column="41" lean-forward="false" selection-start-line="84" selection-start-column="41" selection-end-line="84" selection-end-column="41" />
+          <folding>
+            <marker date="1529653530000" expanded="true" signature="11153:11160" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Evento.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="118" lean-forward="false" selection-start-line="14" selection-start-column="118" selection-end-line="14" selection-end-column="118" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EstadisticoConsulta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="105" column="36" lean-forward="false" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="36" />
+          <folding>
+            <marker date="1529653776000" expanded="true" signature="3606:3614" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controlador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding>
+            <marker date="1529653614000" expanded="true" signature="11634:11639" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Consulta.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -690,22 +925,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EstadisticoConsulta.java">
+    <entry file="file://$PROJECT_DIR$/src/ModuloAdministradorDeClientesYConexiones.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="52" column="36" lean-forward="false" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+        <state relative-caret-position="703">
+          <caret line="65" column="50" lean-forward="false" selection-start-line="65" selection-start-column="50" selection-end-line="65" selection-end-column="50" />
           <folding>
-            <element signature="e#1820#1821#0" expanded="true" />
-            <element signature="e#1866#1867#0" expanded="true" />
-            <element signature="e#1932#1933#0" expanded="true" />
-            <element signature="e#1979#1980#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Modulo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="103">
           <caret line="7" column="32" lean-forward="false" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -713,53 +945,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Estadistico.java">
+    <entry file="file://$PROJECT_DIR$/src/Interfaz.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+        <state relative-caret-position="-12617">
+          <caret line="349" column="76" lean-forward="true" selection-start-line="349" selection-start-column="76" selection-end-line="349" selection-end-column="76" />
           <folding>
-            <element signature="e#697#698#0" expanded="true" />
-            <element signature="e#729#730#0" expanded="true" />
-            <element signature="e#773#774#0" expanded="true" />
-            <element signature="e#817#818#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaPintoDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="63" column="41" lean-forward="false" selection-start-line="63" selection-start-column="41" selection-end-line="63" selection-end-column="41" />
-          <folding>
-            <marker date="1529461109000" expanded="true" signature="3596:3602" ph="{}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ModuloAdministradorDeClientesYConexiones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="55" column="50" lean-forward="false" selection-start-line="55" selection-start-column="50" selection-end-line="55" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Evento.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="14" column="118" lean-forward="false" selection-start-line="14" selection-start-column="118" selection-end-line="14" selection-end-column="118" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controlador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#77541#0" expanded="true" />
           </folding>
         </state>
       </provider>

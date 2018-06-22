@@ -18,10 +18,24 @@ public abstract class Modulo {
         this.numeroServidores = numeroServidores;
         this.reloj = reloj;
     }
+    
+    public void reset(){
+        this.reloj = 0;
+        try{
+            this.cola.clear(); //Dentro de un try porque Admin Clientes no tiene cola.
+        }catch(Exception e){
+            
+        }
+    }
 
     public Queue<Consulta> getCola(){
         return this.cola;
     }
+    
+    public int getTamanoCola(){
+        return this.cola.size();
+    }
+    
     public void setReloj(double rel){ this.reloj = rel;}
 
     abstract void procesarLlegada(Consulta consulta);

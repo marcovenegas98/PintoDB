@@ -5,9 +5,7 @@ import java.lang.Math;
  */
 public class CalculadorValoresAleatorios {
     private double tablaDistribucionConsultas[] = new double[4];
-    
-    
-    
+
     public CalculadorValoresAleatorios(){
         tablaDistribucionConsultas[0] = 0.3;
         tablaDistribucionConsultas[1] = 0.55;

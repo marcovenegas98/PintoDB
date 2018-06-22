@@ -1,5 +1,8 @@
 import java.util.PriorityQueue;
+import java.util.concurrent.Semaphore;
 public class SistemaPintoDB {
+    private Interfaz interfaz;
+    
     private ModuloAdministradorDeClientesYConexiones adminClientes;
     private ModuloAdministradorDeProcesos adminProcesos;
     private ModuloProcesadorDeConsultas procesadorConsultas;
@@ -17,9 +20,12 @@ public class SistemaPintoDB {
     private double timeout;
     private double duracionSimulacion; //en segundos
 
-
-    public SistemaPintoDB(Estadistico estadistico, EstadisticoConsulta estadisticoConsulta, int[] parametros, double timeout, double duracion){
+    private Semaphore semEjecucion;
+    
+    public SistemaPintoDB(Interfaz interfaz, Semaphore semEjecucion, Estadistico estadistico, EstadisticoConsulta estadisticoConsulta, int[] parametros, double timeout, double duracion){
         //this.parametros = parametros;
+        this.interfaz = interfaz;
+        this.semEjecucion = semEjecucion;
         this.reloj = 0;
         this.estadistico = estadistico;
         this.estadisticoConsulta = estadisticoConsulta;
@@ -56,6 +62,11 @@ public class SistemaPintoDB {
         Evento eventoActual = listaDeEventos.poll(); //Saca el siguiente evento de la lista de eventos.
         eventoActual.getConsulta().setTiempoIngreso(this.reloj); //Se le da a la consulta el tiempo en el que ingresó al sistema.
         this.reloj = eventoActual.getTiempoOcurrencia(); //Se actualiza el reloj.
+        //this.semActualizacion.release();
+        
+//        try{
+//            this.semActualizacion.acquire();
+//        }catch(Exception e){}
         while(reloj < duracionSimulacion){
             System.out.println("Reloj del sistema: " + this.reloj + " ---- Procesando una " + eventoActual.getTipoEvento() + " en el modulo " + eventoActual.getTipoModulo());
             this.mandarAProcesar(eventoActual);
@@ -67,9 +78,10 @@ public class SistemaPintoDB {
             eventoActual = listaDeEventos.poll(); //Saca el siguiente evento de la lista de eventos.
             eventoActual.getConsulta().setTiempoIngreso(this.reloj); //Se le da a la consulta el tiempo en el que ingresó al sistema.
             this.reloj = eventoActual.getTiempoOcurrencia(); //Se actualiza el reloj.
+            this.interfaz.actualizarInteractivo();
             System.out.println("\n");
         }
-        this.estadistico.setConexionesDescartadas(adminClientes.getConexionesDescartadas()); //Actualizo las conexiones descartadas.
+        //this.estadistico.setConexionesDescartadas(adminClientes.getConexionesDescartadas()); //Actualizo las conexiones descartadas.
        //this.estadistico.incrementarTamanosAcumuladosDeColasPorModulo(this.getTamanoColaPorModulo());
     }
 
@@ -87,35 +99,34 @@ public class SistemaPintoDB {
             case ENTRADA:{
                 switch(evento.getTipoModulo()){
                     case ClientesYConexiones:{
-
                         adminClientes.setReloj(reloj);
                         adminClientes.procesarLlegada(evento.getConsulta());
                         break;
                     }
                     case AdministradorDeProcesos:{
                         this.estadistico.incrementarEntradasPorModulo(0);
-                        this.estadistico.incrementarTamanosAcumuladosDeColasPorModulo(0,adminProcesos.getCola().size());
+                        this.estadistico.incrementarTamanosAcumuladosDeColasPorModulo(0,adminProcesos.getTamanoCola());
                         adminProcesos.setReloj(reloj);
                         adminProcesos.procesarLlegada(evento.getConsulta());
                         break;
                     }
                     case ProcesadorDeConsultas:{
                         this.estadistico.incrementarEntradasPorModulo(1);
-                        this.estadistico.incrementarTamanosAcumuladosDeColasPorModulo(1,procesadorConsultas.getCola().size());
+                        this.estadistico.incrementarTamanosAcumuladosDeColasPorModulo(1,procesadorConsultas.getTamanoCola());
                         procesadorConsultas.setReloj(reloj);
                         procesadorConsultas.procesarLlegada(evento.getConsulta());
                         break;
                     }
                     case TransaccionYAccesoADatos:{
                         this.estadistico.incrementarEntradasPorModulo(2);
-                        this.estadistico.incrementarTamanosAcumuladosDeColasPorModulo(2,adminDatos.getCola().size());
+                        this.estadistico.incrementarTamanosAcumuladosDeColasPorModulo(2,adminDatos.getTamanoCola());
                         adminDatos.setReloj(reloj);
                         adminDatos.procesarLlegada(evento.getConsulta());
                         break;
                     }
                     case EjecutorDeSentencias:{
                         this.estadistico.incrementarEntradasPorModulo(3);
-                        this.estadistico.incrementarTamanosAcumuladosDeColasPorModulo(3,ejecutorSentencias.getCola().size());
+                        this.estadistico.incrementarTamanosAcumuladosDeColasPorModulo(3,ejecutorSentencias.getTamanoCola());
                         ejecutorSentencias.setReloj(reloj);
                         ejecutorSentencias.procesarLlegada(evento.getConsulta());
                         break;
@@ -187,5 +198,40 @@ public class SistemaPintoDB {
             }
         }
         return modulo;
+    }
+    
+    public double getReloj(){
+        return this.reloj;
+    }
+    
+    public void setReloj(double reloj){
+        this.reloj = reloj;
+    }
+    
+    public void resetSistema(){
+        this.reloj = 0;
+        this.adminClientes.setConexionesDescartadas(0);
+        this.adminClientes.reset();
+        this.adminProcesos.reset();
+        this.procesadorConsultas.reset();
+        this.adminDatos.reset();
+        this.ejecutorSentencias.reset();
+    }
+    
+    public int getConexionesDescartadas(){
+        return this.adminClientes.getConexionesDescartadas();
+    }
+    
+    public void setConexionesDescartadas(int conexionesDescartadas){
+        this.adminClientes.setConexionesDescartadas(conexionesDescartadas);
+    }
+    
+    public int[] getTamanosColas(){
+        int[] tamanosColas = new int[4];
+        tamanosColas[0] = this.adminProcesos.getTamanoCola();
+        tamanosColas[1] = this.procesadorConsultas.getTamanoCola();
+        tamanosColas[2] = this.adminDatos.getTamanoCola();
+        tamanosColas[3] = this.ejecutorSentencias.getTamanoCola();
+        return tamanosColas;
     }
 }
