@@ -17,9 +17,9 @@ public class ModuloAdministradorDeClientesYConexiones extends Modulo {
         consulta.setTipoModulo(TipoModulo.ClientesYConexiones); //La consulta se encuentra en este módulo.
         if(numeroServidores == 0){
             conexionesDescartadas++;
+            listaDeEventos.removeIf((Evento ev) -> ev.getConsulta() == consulta); //Quito el timeout si la conexion fue descartada
         }else{
             numeroServidores--;
-
             generarLlegadaAdmProcesos(consulta);
         }
         this.generarLlegadaAdmClientes();
@@ -41,13 +41,14 @@ public class ModuloAdministradorDeClientesYConexiones extends Modulo {
 
         this.estadisticoConsulta.incrementarTiempoAcumuladoDeVida(tiempoDeVida);
 
-        numeroServidores++;
-        listaDeEventos.removeIf((Evento ev) -> ev.getConsulta() == consulta); //Saca de la lista de eventos el timeout.
+        this.numeroServidores++;
+        this.listaDeEventos.removeIf((Evento ev) -> ev.getConsulta() == consulta); //Saca de la lista de eventos el timeout.
         //La consulta salió del sistema.
     }
 
 
     public void manejarTimeout(Consulta consulta, Modulo modulo){
+        this.numeroServidores++;
         if(consulta.isEnCola()){ //Si la consulta esta en cola, la saco de la cola.
            modulo.getCola().remove(consulta);
         }else{
