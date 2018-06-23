@@ -84,5 +84,9 @@ public class ModuloAdministradorDeClientesYConexiones extends Modulo {
     public void setConexionesDescartadas(int conexionesDescartadas){
         this.conexionesDescartadas = conexionesDescartadas;
     }
+    
+    public void setTimeout(double timeout){
+        this.timeout = timeout;
+    }
 }
 

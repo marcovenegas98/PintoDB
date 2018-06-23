@@ -79,7 +79,6 @@ public class Interfaz extends javax.swing.JFrame {
     private SistemaPintoDB sistema;
     private JTextField[] textFields;
     private Semaphore semEjecucion;
-    private Semaphore semActualizacion;
     
     /**
      * Creates new form Interfaz
@@ -127,14 +126,15 @@ public class Interfaz extends javax.swing.JFrame {
             this.semEjecucion.acquire();
         }catch(Exception e){}
         
-        int[] LQs = this.controlador.getLQs();
+        double[] LQs = this.controlador.getLQs();
         this.colaAPPromedio.setText("" + LQs[0]);
         this.colaPCPromedio.setText("" + LQs[1]);
         this.colaTADPromedio.setText("" + LQs[2]);
         this.colaESPromedio.setText("" + LQs[3]);
         
         double[][] tiempoPromedioDeSentenciaPorModulo = controlador.getTiemposPasadosPorConsultaPorModulo();
-        this.ddlTMAC.setText("" + tiempoPromedioDeSentenciaPorModulo[4][0]);
+        
+        this.ddlTMAC.setText(Double.toString(tiempoPromedioDeSentenciaPorModulo[4][0]));
         this.ddlTMAP.setText("" + tiempoPromedioDeSentenciaPorModulo[0][0]);
         this.ddlTMPC.setText("" + tiempoPromedioDeSentenciaPorModulo[1][0]);
         this.ddlTMTAD.setText("" + tiempoPromedioDeSentenciaPorModulo[2][0]);
@@ -165,6 +165,53 @@ public class Interfaz extends javax.swing.JFrame {
         this.PanelInteractivo.setVisible(false);
         this.PanelFinCorridas.setVisible(true);
     }
+    
+    public void finSimulacion(){
+        try{
+            this.semEjecucion.acquire();
+        }catch(Exception e){}
+        
+        double[] LQs = this.controlador.getLQsTotales();
+        this.colaAPPromedioTotal.setText("" + LQs[0]);
+        this.colaPCPromedioTotal.setText("" + LQs[1]);
+        this.colaTADPromedioTotal.setText("" + LQs[2]);
+        this.colaESPromedioTotal.setText("" + LQs[3]);
+        
+        double[][] tiempoPromedioDeSentenciaPorModulo = this.controlador.getTiemposPasadosPorConsultaPorModuloTotales();
+        this.ddlTMACTotal.setText(Double.toString(tiempoPromedioDeSentenciaPorModulo[4][0]));
+        this.ddlTMAPTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[0][0]);
+        this.ddlTMPCTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[1][0]);
+        this.ddlTMTADTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[2][0]);
+        this.ddlTMESTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[3][0]);
+        
+        this.selectTMACTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[4][1]);
+        this.selectTMAPTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[0][1]);
+        this.selectTMPCTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[1][1]);
+        this.selectTMTADTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[2][1]);
+        this.selectTMESTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[3][1]);
+        
+        this.joinTMACTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[4][2]);
+        this.joinTMAPTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[0][2]);
+        this.joinTMPCTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[1][2]);
+        this.joinTMTADTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[2][2]);
+        this.joinTMESTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[3][2]);
+        
+        this.updateTMACTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[4][3]);
+        this.updateTMAPTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[0][3]);
+        this.updateTMPCTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[1][3]);
+        this.updateTMTADTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[2][3]);
+        this.updateTMESTotal.setText("" + tiempoPromedioDeSentenciaPorModulo[3][3]);
+        
+        double tiempoPromedioDeVida = this.controlador.getTiempoPromedioVidaConexionTotal();
+        this.tiempoPromVidaTotal.setText(""+ tiempoPromedioDeVida);
+        
+        this.conexDescPromTotal.setText(""+ this.controlador.getConexionesDescartadasPromedioTotal());
+        
+        this.PanelInteractivo.setVisible(false);
+        this.PanelFinal.setVisible(true);
+        
+    }
+    
     
     public void setSistema(SistemaPintoDB sistema){
         this.sistema = sistema;
@@ -1025,7 +1072,7 @@ public class Interfaz extends javax.swing.JFrame {
         PanelFinal.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 60, 30));
 
         jLabel51.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        jLabel51.setText("Número de conexiones descartadas:");
+        jLabel51.setText("Número pomedio de conexiones descartadas:");
         PanelFinal.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jLabel52.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -1182,10 +1229,20 @@ public class Interfaz extends javax.swing.JFrame {
 
         nuevaBTN.setFont(new java.awt.Font("Lucida Grande", 1, 10)); // NOI18N
         nuevaBTN.setText("Nueva Simulación");
+        nuevaBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevaBTNActionPerformed(evt);
+            }
+        });
         PanelFinal.add(nuevaBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 110, 70));
 
         salirBTN.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
         salirBTN.setText("Salir");
+        salirBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirBTNActionPerformed(evt);
+            }
+        });
         PanelFinal.add(salirBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
 
         getContentPane().add(PanelFinal, "card2");
@@ -1251,6 +1308,19 @@ public class Interfaz extends javax.swing.JFrame {
         this.PanelInteractivo.setVisible(true);
         this.semEjecucion.release();
     }//GEN-LAST:event_continuarSimActionPerformed
+
+    private void salirBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirBTNActionPerformed
+        // TODO add your handling code here:
+        this.controlador.setExit(true);
+        this.dispose();
+        this.semEjecucion.release();
+    }//GEN-LAST:event_salirBTNActionPerformed
+
+    private void nuevaBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevaBTNActionPerformed
+        // TODO add your handling code here:
+        this.PanelFinal.setVisible(false);
+        this.PanelInitData.setVisible(true);
+    }//GEN-LAST:event_nuevaBTNActionPerformed
 
     /**
      * @param args the command line arguments

@@ -94,7 +94,8 @@ public class EstadisticoConsulta {
     public double[][] calcularTiempoPromedioDeSentenciaPorModulo(){
         for(int modulo = 0; modulo < 5; ++modulo){
             for(int consulta = 0; consulta < 4; ++consulta){
-                double tiempoPromedio = tiempoTotalConsultas[modulo][consulta]/totalConsultasRecibidas[modulo][consulta];
+                double totalConsultasEnModuloActual = (double)totalConsultasRecibidas[modulo][consulta];
+                double tiempoPromedio = tiempoTotalConsultas[modulo][consulta]/totalConsultasEnModuloActual;
                 tiempoConsultasPorModulo[modulo][consulta] = tiempoPromedio;
             }
         }

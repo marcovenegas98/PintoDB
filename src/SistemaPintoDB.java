@@ -19,10 +19,11 @@ public class SistemaPintoDB {
     //private int[] parametros; //k, n, p, m. En ese orden.
     private double timeout;
     private double duracionSimulacion; //en segundos
+    private boolean modoLento;
 
     private Semaphore semEjecucion;
     
-    public SistemaPintoDB(Interfaz interfaz, Semaphore semEjecucion, Estadistico estadistico, EstadisticoConsulta estadisticoConsulta, int[] parametros, double timeout, double duracion){
+    public SistemaPintoDB(Interfaz interfaz, Semaphore semEjecucion, Estadistico estadistico, EstadisticoConsulta estadisticoConsulta, int[] parametros, double timeout, double duracion, boolean modoLento){
         //this.parametros = parametros;
         this.interfaz = interfaz;
         this.semEjecucion = semEjecucion;
@@ -33,6 +34,7 @@ public class SistemaPintoDB {
         this.calculador = new CalculadorValoresAleatorios();
         this.timeout = timeout;
         this.duracionSimulacion = duracion;
+        this.modoLento = modoLento;
 
         //Módulos
         this.adminClientes = new ModuloAdministradorDeClientesYConexiones(this.estadistico, this.estadisticoConsulta, this.listaDeEventos,  this.calculador, this.reloj, parametros[0], this.timeout);
@@ -40,14 +42,17 @@ public class SistemaPintoDB {
         this.procesadorConsultas = new ModuloProcesadorDeConsultas(this.estadistico, this.estadisticoConsulta, this.listaDeEventos,  this.calculador, this.reloj, parametros[1]);
         this.adminDatos = new ModuloDeTransaccionesYAccesoADatos(this.estadistico, this.estadisticoConsulta, this.listaDeEventos,  this.calculador, this.reloj, parametros[2]);
         this.ejecutorSentencias = new ModuloEjecutorDeSentencias(this.estadistico, this.estadisticoConsulta, this.listaDeEventos,  this.calculador, this.reloj, parametros[3]);
-
+        
+        this.insertarEventoInicial();
+    }
+    
+    private void insertarEventoInicial(){
         //Se guarda en la lista de eventos el evento inicial.
         TipoConsulta tipoConsulta = calculador.genMonteCarloConsulta();
         Consulta consultaInicial = new Consulta(tipoConsulta);
         listaDeEventos.add(new Evento(TipoEvento.ENTRADA, TipoModulo.ClientesYConexiones, this.reloj, consultaInicial));
         //Se genera el timeout para esta consulta.
         listaDeEventos.add(new Evento(TipoEvento.TIMEOUT, TipoModulo.ClientesYConexiones, this.reloj + this.timeout, consultaInicial));
-
     }
 
     public void setDuracionSimulacion(double duracionSimulacion){
@@ -58,10 +63,11 @@ public class SistemaPintoDB {
         return duracionSimulacion;
     }
 
-    public void simular(){
+    public void simular() throws InterruptedException{
         Evento eventoActual = listaDeEventos.poll(); //Saca el siguiente evento de la lista de eventos.
         eventoActual.getConsulta().setTiempoIngreso(this.reloj); //Se le da a la consulta el tiempo en el que ingresó al sistema.
         this.reloj = eventoActual.getTiempoOcurrencia(); //Se actualiza el reloj.
+        double relojAnterior = this.reloj;
         //this.semActualizacion.release();
         
 //        try{
@@ -79,11 +85,18 @@ public class SistemaPintoDB {
             eventoActual.getConsulta().setTiempoIngreso(this.reloj); //Se le da a la consulta el tiempo en el que ingresó al sistema.
             this.reloj = eventoActual.getTiempoOcurrencia(); //Se actualiza el reloj.
             this.interfaz.actualizarInteractivo();
+            if(this.reloj != relojAnterior){ //Hubo un cambio de reloj
+                relojAnterior = this.reloj;
+                if(this.modoLento){
+                    Thread.sleep(1000);
+                }
+            }
             System.out.println("\n");
         }
         //this.estadistico.setConexionesDescartadas(adminClientes.getConexionesDescartadas()); //Actualizo las conexiones descartadas.
        //this.estadistico.incrementarTamanosAcumuladosDeColasPorModulo(this.getTamanoColaPorModulo());
     }
+    
 
     private int[] getTamanoColaPorModulo(){
         int[] tamanoColaPorModulo = new int[4];
@@ -208,14 +221,34 @@ public class SistemaPintoDB {
         this.reloj = reloj;
     }
     
-    public void resetSistema(){
+    public void resetSistemaParcial(){
         this.reloj = 0;
         this.adminClientes.setConexionesDescartadas(0);
         this.adminClientes.reset();
         this.adminProcesos.reset();
         this.procesadorConsultas.reset();
         this.adminDatos.reset();
+        this.adminDatos.resetDDLsEsperando();
         this.ejecutorSentencias.reset();
+        this.listaDeEventos.clear();
+        this.insertarEventoInicial();
+    }
+    
+    public void resetSistema(int[] parametros, double timeout, double duracionSimulacion, boolean modoLento){
+        this.adminClientes.setNumeroServidores(parametros[0]);
+        
+        this.procesadorConsultas.setNumeroServidores(parametros[1]); 
+        
+        this.adminDatos.setNumeroServidores(parametros[2]);
+        this.adminDatos.setTiempoCoordinacion();
+        
+        this.ejecutorSentencias.setNumeroServidores(parametros[3]);
+        
+        this.resetSistemaParcial();
+        
+        this.duracionSimulacion = duracionSimulacion;
+        
+        this.modoLento = modoLento;
     }
     
     public int getConexionesDescartadas(){
@@ -233,5 +266,13 @@ public class SistemaPintoDB {
         tamanosColas[2] = this.adminDatos.getTamanoCola();
         tamanosColas[3] = this.ejecutorSentencias.getTamanoCola();
         return tamanosColas;
+    }
+    
+    public void setParametros(int[] params, double timeout){
+        this.adminClientes.setNumeroServidores(params[0]);
+        this.adminClientes.setTimeout(timeout);
+        this.procesadorConsultas.setNumeroServidores(params[1]);
+        this.adminDatos.setNumeroServidores(params[2]);
+        this.ejecutorSentencias.setNumeroServidores(params[3]);
     }
 }

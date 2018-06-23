@@ -12,7 +12,7 @@ public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
         this.cola = new PriorityQueue<>();
         this.DDLsEsperando = 0;
         this.tiempoUltimaSalida = this.reloj;
-        this.tiempoCoordinacion = p * 0.03;
+        this.setTiempoCoordinacion();
     }
 
     void procesarLlegada(Consulta consulta){
@@ -76,5 +76,13 @@ public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
 
     private void generarEntradaEjecSentencias(Consulta consulta){
         this.listaDeEventos.add(new Evento(TipoEvento.ENTRADA, TipoModulo.EjecutorDeSentencias, this.reloj, consulta));
+    }
+    
+    public void setTiempoCoordinacion(){
+        this.tiempoCoordinacion = this.NUMSERVIDORES * 0.03;
+    }
+    
+    public void resetDDLsEsperando(){
+        this.DDLsEsperando = 0;
     }
 }
