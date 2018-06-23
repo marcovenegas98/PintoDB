@@ -2,33 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3f4b925-f2f2-4aa9-bc32-84d26e9ef0c6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/ModuloAdministradorDeProcesos.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/ModuloDeTransaccionesYAccesoADatos.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/ModuloEjecutorDeSentencias.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/ModuloProcesadorDeConsultas.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/Consulta.class" afterPath="$PROJECT_DIR$/out/production/TPIO/Consulta.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/Evento.class" afterPath="$PROJECT_DIR$/out/production/TPIO/Evento.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/SistemaPintoDB$1.class" afterPath="$PROJECT_DIR$/out/production/TPIO/SistemaPintoDB$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/SistemaPintoDB.class" afterPath="$PROJECT_DIR$/out/production/TPIO/SistemaPintoDB.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CalculadorValoresAleatorios.java" afterPath="$PROJECT_DIR$/src/CalculadorValoresAleatorios.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Consulta.java" afterPath="$PROJECT_DIR$/src/Consulta.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controlador.java" afterPath="$PROJECT_DIR$/src/Controlador.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Estadistico.java" afterPath="$PROJECT_DIR$/src/Estadistico.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EstadisticoConsulta.java" afterPath="$PROJECT_DIR$/src/EstadisticoConsulta.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Evento.java" afterPath="$PROJECT_DIR$/src/Evento.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Interfaz.java" afterPath="$PROJECT_DIR$/src/Interfaz.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Modulo.java" afterPath="$PROJECT_DIR$/src/Modulo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ModuloAdministradorDeClientesYConexiones.java" afterPath="$PROJECT_DIR$/src/ModuloAdministradorDeClientesYConexiones.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ModuloAdministradorDeProcesos.java" afterPath="$PROJECT_DIR$/src/ModuloAdministradorDeProcesos.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ModuloDeTransaccionesYAccesoADatos.java" afterPath="$PROJECT_DIR$/src/ModuloDeTransaccionesYAccesoADatos.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ModuloEjecutorDeSentencias.java" afterPath="$PROJECT_DIR$/src/ModuloEjecutorDeSentencias.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ModuloProcesadorDeConsultas.java" afterPath="$PROJECT_DIR$/src/ModuloProcesadorDeConsultas.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SistemaPintoDB.java" afterPath="$PROJECT_DIR$/src/SistemaPintoDB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TipoConsulta.java" afterPath="$PROJECT_DIR$/src/TipoConsulta.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TipoEvento.java" afterPath="$PROJECT_DIR$/src/TipoEvento.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TipoModulo.java" afterPath="$PROJECT_DIR$/src/TipoModulo.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,7 +14,76 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="Controlador.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controlador.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2563">
+              <caret line="37" column="51" lean-forward="true" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SistemaPintoDB.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SistemaPintoDB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="409">
+              <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ModuloAdministradorDeProcesos.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ModuloAdministradorDeProcesos.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="53" column="26" lean-forward="false" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ModuloAdministradorDeClientesYConexiones.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ModuloAdministradorDeClientesYConexiones.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-258">
+              <caret line="42" column="115" lean-forward="false" selection-start-line="42" selection-start-column="115" selection-end-line="42" selection-end-column="115" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Estadistico.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Estadistico.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="117" column="6" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ModuloProcesadorDeConsultas.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ModuloProcesadorDeConsultas.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="598">
+              <caret line="102" column="7" lean-forward="false" selection-start-line="102" selection-start-column="7" selection-end-line="102" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -77,7 +121,6 @@
         <option value="$PROJECT_DIR$/src/Evento.java" />
         <option value="$PROJECT_DIR$/src/Interfaz.java" />
         <option value="$PROJECT_DIR$/src/Modulo.java" />
-        <option value="$PROJECT_DIR$/src/ModuloAdministradorDeClientesYConexiones.java" />
         <option value="$PROJECT_DIR$/src/ModuloDeTransaccionesYAccesoADatos.java" />
         <option value="$PROJECT_DIR$/src/ModuloAdministradorDeProcesos.java" />
         <option value="$PROJECT_DIR$/src/ModuloEjecutorDeSentencias.java" />
@@ -85,6 +128,7 @@
         <option value="$PROJECT_DIR$/src/TipoConsulta.java" />
         <option value="$PROJECT_DIR$/src/TipoEvento.java" />
         <option value="$PROJECT_DIR$/src/TipoModulo.java" />
+        <option value="$PROJECT_DIR$/src/ModuloAdministradorDeClientesYConexiones.java" />
         <option value="$PROJECT_DIR$/src/SistemaPintoDB.java" />
       </list>
     </option>
@@ -95,7 +139,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1280" />
     <option name="height" value="800" />
   </component>
@@ -133,6 +177,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -150,9 +197,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -293,18 +337,19 @@
       <workItem from="1529621610257" duration="609000" />
       <workItem from="1529654492140" duration="103000" />
       <workItem from="1529773180318" duration="9990000" />
+      <workItem from="1529783876064" duration="909000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62123000" />
+    <option name="totallyTimeSpent" value="63032000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="6" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -315,7 +360,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23203126" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23203126" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -327,6 +372,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -350,6 +396,8 @@
           <caret line="349" column="76" lean-forward="true" selection-start-line="349" selection-start-column="76" selection-end-line="349" selection-end-column="76" />
           <folding>
             <element signature="e#0#80991#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#10487#10576#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -422,9 +470,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="930">
           <caret line="63" column="50" lean-forward="false" selection-start-line="63" selection-start-column="50" selection-end-line="63" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -460,9 +506,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="55" column="50" lean-forward="false" selection-start-line="55" selection-start-column="50" selection-end-line="55" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -540,9 +584,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="68" lean-forward="false" selection-start-line="0" selection-start-column="68" selection-end-line="0" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -640,14 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Estadistico.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="133" column="37" lean-forward="false" selection-start-line="133" selection-start-column="37" selection-end-line="133" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Consulta.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
@@ -704,34 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ModuloAdministradorDeClientesYConexiones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1842">
-          <caret line="139" column="47" lean-forward="false" selection-start-line="139" selection-start-column="47" selection-end-line="139" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ModuloAdministradorDeProcesos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="53" column="26" lean-forward="false" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ModuloProcesadorDeConsultas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="102" column="7" lean-forward="false" selection-start-line="102" selection-start-column="7" selection-end-line="102" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ModuloEjecutorDeSentencias.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="478">
@@ -771,22 +777,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SistemaPintoDB.java">
+    <entry file="file://$PROJECT_DIR$/src/Controlador.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="298" column="55" lean-forward="false" selection-start-line="298" selection-start-column="55" selection-end-line="298" selection-end-column="55" />
+        <state relative-caret-position="-2563">
+          <caret line="37" column="51" lean-forward="true" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Estadistico.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="117" column="6" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ModuloProcesadorDeConsultas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="102" column="7" lean-forward="false" selection-start-line="102" selection-start-column="7" selection-end-line="102" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controlador.java">
+    <entry file="file://$PROJECT_DIR$/src/ModuloAdministradorDeProcesos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2351">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="170">
+          <caret line="53" column="26" lean-forward="false" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ModuloAdministradorDeClientesYConexiones.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-258">
+          <caret line="42" column="115" lean-forward="false" selection-start-line="42" selection-start-column="115" selection-end-line="42" selection-end-column="115" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SistemaPintoDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

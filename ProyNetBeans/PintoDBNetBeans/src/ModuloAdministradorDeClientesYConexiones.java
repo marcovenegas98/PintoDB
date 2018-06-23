@@ -34,11 +34,13 @@ public class ModuloAdministradorDeClientesYConexiones extends Modulo {
     @Override
     public void procesarLlegada(Consulta consulta){
         consulta.setTipoModulo(TipoModulo.ClientesYConexiones); //La consulta se encuentra en este módulo.
+
         if(numeroServidores == 0){
             conexionesDescartadas++;
             listaDeEventos.removeIf((Evento ev) -> ev.getConsulta() == consulta); //Quito el timeout si la conexion fue descartada
         }else{
             numeroServidores--;
+            consulta.setTiempoIngreso(this.reloj); //Se le da a la consulta el tiempo en el que ingresó al sistema.
             generarLlegadaAdmProcesos(consulta);
         }
         this.generarLlegadaAdmClientes();

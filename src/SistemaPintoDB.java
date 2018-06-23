@@ -91,7 +91,6 @@ public class SistemaPintoDB {
         while(reloj < duracionSimulacion){
             this.mandarAProcesar(eventoActual);
             eventoActual = listaDeEventos.poll(); //Saca el siguiente evento de la lista de eventos.
-            eventoActual.getConsulta().setTiempoIngreso(this.reloj); //Se le da a la consulta el tiempo en el que ingresó al sistema.
             this.reloj = eventoActual.getTiempoOcurrencia(); //Se actualiza el reloj.
             this.interfaz.actualizarInteractivo();
             if(this.reloj != relojAnterior){ //Hubo un cambio de reloj
