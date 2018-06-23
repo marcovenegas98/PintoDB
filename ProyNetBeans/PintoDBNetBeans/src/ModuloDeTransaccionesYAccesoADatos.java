@@ -1,4 +1,9 @@
 import java.util.PriorityQueue;
+
+/**
+ * Clase ModuloDeTransaccionesYAccesoADatos.
+ * Simula el comportamiento de este módulo en el DBMS.
+ */
 public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
 
     private double tiempoCoordinacion;
@@ -7,6 +12,17 @@ public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
     private int DDLsEsperando;
     private double tiempoUltimaSalida;
 
+    /**
+     * Constructor de la clase.
+     * Inicializa sus atributos.
+     *
+     * @param estadistico
+     * @param estadisticoConsulta
+     * @param listaDeEventos
+     * @param calculador
+     * @param reloj
+     * @param p
+     */
     public ModuloDeTransaccionesYAccesoADatos(Estadistico estadistico, EstadisticoConsulta estadisticoConsulta, PriorityQueue<Evento> listaDeEventos, CalculadorValoresAleatorios calculador, double reloj, int p){
         super(estadistico, estadisticoConsulta, listaDeEventos, calculador, reloj, p);
         this.cola = new PriorityQueue<>();
@@ -15,11 +31,15 @@ public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
         this.setTiempoCoordinacion();
     }
 
+    /**
+     * Procesa la llegada de una consulta a este módulo.
+     *
+     * @param consulta la consulta entrante.
+     */
     void procesarLlegada(Consulta consulta){
         consulta.setTipoModulo(TipoModulo.TransaccionYAccesoADatos);
         consulta.setTiempoIngresoModulo(this.reloj);
         if(numeroServidores == 0 || DDLsEsperando > 0){ //Si llega un proceso mientras se esta procesando un DDL se mete a la cola
-            //consulta.setTiempoIngresoCola(this.reloj); //Ingresa a la cola
             consulta.setEnCola(true);
             cola.add(consulta);
         }else{
@@ -28,12 +48,15 @@ public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
         }
     }
 
+    /**
+     * Procesa la salida de una consulta de este módulo.
+     *
+     * @param consulta la consulta saliente.
+     */
     void procesarSalida(Consulta consulta){
         estadisticoConsulta.incrementarConsultasRecibidas(2, consulta);
         double tiempoTranscurrido = this.reloj-consulta.getTiempoIngresoModulo();
         estadisticoConsulta.incrementarTiempoConsulta(2, consulta, tiempoTranscurrido);
-        //double tiempoRestante = consulta.getTiempoRestante() - tiempoTranscurrido;
-        //consulta.setTiempoRestante(tiempoRestante);
 
         if(consulta.getTipoConsulta() == TipoConsulta.DDL){
             DDLsEsperando--;
@@ -41,7 +64,6 @@ public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
         if(cola.size() > 0){ //Si hay gente en la cola.
             Consulta otraConsulta = cola.poll(); //Saco a otra consulta de la cola
             otraConsulta.setEnCola(false); //Cuando se saca de la cola, se desmarca el booleano.
-            //otraConsulta.setTiempoEnCola(this.reloj-otraConsulta.getTiempoIngresoCola());
             generarSalidaTAD(otraConsulta);
         }else{
             numeroServidores++;
@@ -50,6 +72,11 @@ public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
         generarEntradaEjecSentencias(consulta);
     }
 
+    /**
+     * Calcula el tiempo en el que saldrá la consulta del módulo y genera la salida.
+     *
+     * @param consulta la consulta.
+     */
     private void generarSalidaTAD(Consulta consulta){
         double tiempoCargaBloques = 0;
         if(consulta.getTipoConsulta() == TipoConsulta.JOIN){
@@ -74,14 +101,26 @@ public class ModuloDeTransaccionesYAccesoADatos extends Modulo {
         this.listaDeEventos.add(new Evento(TipoEvento.SALIDA, TipoModulo.TransaccionYAccesoADatos, tiempoOcurrencia, consulta));
     }
 
+    /**
+     * Genera la entrada al siguente módulo.
+     *
+     * @param consulta la consulta
+     */
+
     private void generarEntradaEjecSentencias(Consulta consulta){
         this.listaDeEventos.add(new Evento(TipoEvento.ENTRADA, TipoModulo.EjecutorDeSentencias, this.reloj, consulta));
     }
-    
+
+    /**
+     * Asignar el tiempo de coordinación de este módulo.
+     */
     public void setTiempoCoordinacion(){
         this.tiempoCoordinacion = this.NUMSERVIDORES * 0.03;
     }
-    
+
+    /**
+     * Pone la cantidad de DDL esperando en 0.
+     */
     public void resetDDLsEsperando(){
         this.DDLsEsperando = 0;
     }

@@ -1,5 +1,11 @@
 import java.util.PriorityQueue;
 import java.util.concurrent.Semaphore;
+
+/**
+ * Clase SistemaPintoDB.
+ * Esta clase se encarga de realiza la simulación.
+ * Simula el comportamiento de el DBMS Pinto DB.
+ */
 public class SistemaPintoDB {
     private Interfaz interfaz;
     
@@ -16,15 +22,26 @@ public class SistemaPintoDB {
     public double reloj;
     public PriorityQueue<Evento> listaDeEventos;
 
-    //private int[] parametros; //k, n, p, m. En ese orden.
     private double timeout;
     private double duracionSimulacion; //en segundos
     private boolean modoLento;
 
     private Semaphore semEjecucion;
-    
+
+    /**
+     * Constructor de la clase SistemaPintoDB.
+     * Inicializa sus componentes.
+     *
+     * @param interfaz
+     * @param semEjecucion
+     * @param estadistico
+     * @param estadisticoConsulta
+     * @param parametros
+     * @param timeout
+     * @param duracion
+     * @param modoLento
+     */
     public SistemaPintoDB(Interfaz interfaz, Semaphore semEjecucion, Estadistico estadistico, EstadisticoConsulta estadisticoConsulta, int[] parametros, double timeout, double duracion, boolean modoLento){
-        //this.parametros = parametros;
         this.interfaz = interfaz;
         this.semEjecucion = semEjecucion;
         this.reloj = 0;
@@ -45,7 +62,10 @@ public class SistemaPintoDB {
         
         this.insertarEventoInicial();
     }
-    
+
+    /**
+     * Inserta un evento a la lista de eventos para que pueda empezar la simulación.
+     */
     private void insertarEventoInicial(){
         //Se guarda en la lista de eventos el evento inicial.
         TipoConsulta tipoConsulta = calculador.genMonteCarloConsulta();
@@ -55,14 +75,13 @@ public class SistemaPintoDB {
         listaDeEventos.add(new Evento(TipoEvento.TIMEOUT, TipoModulo.ClientesYConexiones, this.reloj + this.timeout, consultaInicial));
     }
 
-    public void setDuracionSimulacion(double duracionSimulacion){
-        this.duracionSimulacion = duracionSimulacion;
-    }
-
-    public double getDuracionSimulacion(){
-        return duracionSimulacion;
-    }
-
+    /**
+     * Mientras que el tiempo no se haya acabado, saca un evento
+     * de la lista de eventos y lo envía a procesar al módulo correspondiente.
+     * También actualiza la interfaz cada vez que se saca un evento.
+     *
+     * @throws InterruptedException
+     */
     public void simular() throws InterruptedException{
         Evento eventoActual = listaDeEventos.poll(); //Saca el siguiente evento de la lista de eventos.
         eventoActual.getConsulta().setTiempoIngreso(this.reloj); //Se le da a la consulta el tiempo en el que ingresó al sistema.
@@ -77,24 +96,19 @@ public class SistemaPintoDB {
             this.interfaz.actualizarInteractivo();
             if(this.reloj != relojAnterior){ //Hubo un cambio de reloj
                 relojAnterior = this.reloj;
-                if(this.modoLento){
-                    Thread.sleep(500);
+                if(this.modoLento){ //Si estamos en modo lento.
+                    Thread.sleep(1000); //Duerma 1 segundo.
                 }
             }
-            System.out.println("\n");
         }
     }
-    
 
-    private int[] getTamanoColaPorModulo(){
-        int[] tamanoColaPorModulo = new int[4];
-        tamanoColaPorModulo[0] = adminProcesos.getCola().size();
-        tamanoColaPorModulo[1] = procesadorConsultas.getCola().size();
-        tamanoColaPorModulo[2] = adminDatos.getCola().size();
-        tamanoColaPorModulo[3] = ejecutorSentencias.getCola().size();
-        return tamanoColaPorModulo;
-    }
-
+    /**
+     * Dependiendo del tipo de evento, y el tipo de módulo del evento, envía a procesar al
+     * módulo correspondiente, el evento.
+     *
+     * @param evento el evento a procesar.
+     */
     private void mandarAProcesar(Evento evento){
         switch(evento.getTipoEvento()){
             case ENTRADA:{
@@ -173,6 +187,13 @@ public class SistemaPintoDB {
         }
     }
 
+    /**
+     * Dada una consulta, devuelve el módulo en el que se
+     * encuentra dicha consulta.
+     *
+     * @param consulta la consulta.
+     * @return Modulo donde se encuentra la consulta.
+     */
     private Modulo determinarModulo(Consulta consulta){
         TipoModulo tipoModulo = consulta.getTipoModulo();
         Modulo modulo = null;
@@ -200,15 +221,29 @@ public class SistemaPintoDB {
         }
         return modulo;
     }
-    
+
+    /**
+     * Devuelve el valor actual del reloj.
+     *
+     * @return el valor del reloj.
+     */
     public double getReloj(){
         return this.reloj;
     }
-    
+
+    /**
+     * Asigna el valor del reloj.
+     *
+     * @param reloj valor de reloj a ser asignado.
+     */
     public void setReloj(double reloj){
         this.reloj = reloj;
     }
-    
+
+    /**
+     * Reinicia el reloj, la lista de eventos, y los módulos sin
+     * modificar los parámetros de cada módulo.
+     */
     public void resetSistemaParcial(){
         this.reloj = 0;
         this.adminClientes.setConexionesDescartadas(0);
@@ -221,10 +256,20 @@ public class SistemaPintoDB {
         this.listaDeEventos.clear();
         this.insertarEventoInicial();
     }
-    
+
+    /**
+     * Asigna a los módulos nuevos parámetros para correr una nueva simulación.
+     * Reinicia los módulos, el reloj y la lista de eventos.
+     *
+     * @param parametros los nuevos parámetros.
+     * @param timeout timeout nuevo.
+     * @param duracionSimulacion duracion de simulación nueva.
+     * @param modoLento modoLento nuevo.
+     */
     public void resetSistema(int[] parametros, double timeout, double duracionSimulacion, boolean modoLento){
         this.adminClientes.setNumeroServidores(parametros[0]);
-        
+        this.adminClientes.setTimeout(timeout);
+
         this.procesadorConsultas.setNumeroServidores(parametros[1]); 
         
         this.adminDatos.setNumeroServidores(parametros[2]);
@@ -238,15 +283,21 @@ public class SistemaPintoDB {
         
         this.modoLento = modoLento;
     }
-    
+
+    /**
+     * Devuelve la cantidad de conexiones descartadas por el administrador de clientes.
+     *
+     * @return la cantidad de conexiones descartadas.
+     */
     public int getConexionesDescartadas(){
         return this.adminClientes.getConexionesDescartadas();
     }
-    
-    public void setConexionesDescartadas(int conexionesDescartadas){
-        this.adminClientes.setConexionesDescartadas(conexionesDescartadas);
-    }
-    
+
+    /**
+     * Devuelve los tamaños de las colas que hay en cada módulo.
+     *
+     * @return los tamaños de las colas en cada módulo.
+     */
     public int[] getTamanosColas(){
         int[] tamanosColas = new int[4];
         tamanosColas[0] = this.adminProcesos.getTamanoCola();
@@ -254,13 +305,5 @@ public class SistemaPintoDB {
         tamanosColas[2] = this.adminDatos.getTamanoCola();
         tamanosColas[3] = this.ejecutorSentencias.getTamanoCola();
         return tamanosColas;
-    }
-    
-    public void setParametros(int[] params, double timeout){
-        this.adminClientes.setNumeroServidores(params[0]);
-        this.adminClientes.setTimeout(timeout);
-        this.procesadorConsultas.setNumeroServidores(params[1]);
-        this.adminDatos.setNumeroServidores(params[2]);
-        this.ejecutorSentencias.setNumeroServidores(params[3]);
     }
 }

@@ -4,24 +4,33 @@
  * and open the template in the editor.
  */
 
-/**
- *
- * @author Marco
- */
 import java.util.concurrent.Semaphore;
 import javax.swing.*;
 import javax.swing.text.Document;
 import javax.swing.event.*;
+
+/**
+ * Clase Interfaz.
+ * Interfaz gráfica que el usuario puede utilizar para realizar la simulación.
+ */
 public class Interfaz extends javax.swing.JFrame {
-    
-   class DoubleListener implements DocumentListener {
- 
+
+    /**
+     * Implementación de document listener para que el usuario solo pueda ingresar
+     * números reales positivos en los campos de texto.
+     */
+    class DoubleListener implements DocumentListener {
+
+        @Override
         public void insertUpdate(DocumentEvent e) {
             check(e);
         }
+
+        @Override
         public void removeUpdate(DocumentEvent e) {
-            //check(e);
         }
+
+        @Override
         public void changedUpdate(DocumentEvent e) {
             //Plain text components do not fire these events
             check(e);
@@ -43,7 +52,11 @@ public class Interfaz extends javax.swing.JFrame {
             }
         }
     }
-   
+
+    /**
+     * Implementación de document listener para que el usuario solo pueda ingresar
+     * números reales positivos en los campos de texto.
+     */
    class IntegerListener implements DocumentListener {
  
         public void insertUpdate(DocumentEvent e) {
@@ -81,7 +94,8 @@ public class Interfaz extends javax.swing.JFrame {
     private Semaphore semEjecucion;
     
     /**
-     * Creates new form Interfaz
+     * Constructor de la interfaz.
+     * Inicializa todos sus componentes.
      */
     public Interfaz(Controlador controlador, Semaphore semEjecucion) {
         initComponents();
@@ -105,11 +119,10 @@ public class Interfaz extends javax.swing.JFrame {
         
         this.setVisible(true);
     }
-    
-    private void updateUI() {
-        SwingUtilities.updateComponentTreeUI(this);
-    }
-    
+
+    /**
+     * Obtiene los datos concernientes a este panel y los actualiza en el panel.
+     */
     public void actualizarInteractivo(){       
         
         this.relojL.setText("" + sistema.getReloj());
@@ -120,7 +133,12 @@ public class Interfaz extends javax.swing.JFrame {
         this.colaTAD.setText("" + tamanosColas[2]);
         this.colaES.setText("" + tamanosColas[3]);
     }
-    
+
+    /**
+     * Al finalizar una corrida, obtiene las estadísticas
+     * y las despliega en pantalla hasta que el usuario
+     * presione el botón de continuar.
+     */
     public void corridaTerminada(){
         try{
             this.semEjecucion.acquire();
@@ -165,7 +183,12 @@ public class Interfaz extends javax.swing.JFrame {
         this.PanelInteractivo.setVisible(false);
         this.PanelFinCorridas.setVisible(true);
     }
-    
+
+    /**
+     * Al final de todas las corridas, obtiene todas las estadísticas finales
+     * y las despliega en pantalla. El usuario puede escoger salir o correr de
+     * nuevo la simulación.
+     */
     public void finSimulacion(){
         try{
             this.semEjecucion.acquire();
@@ -211,8 +234,12 @@ public class Interfaz extends javax.swing.JFrame {
         this.PanelFinal.setVisible(true);
         
     }
-    
-    
+
+    /**
+     * Asigna el sistema a esta interfaz.
+     *
+     * @param sistema el sistema.
+     */
     public void setSistema(SistemaPintoDB sistema){
         this.sistema = sistema;
     }
@@ -1241,7 +1268,7 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    
+
     private void cantidadCorridasTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadCorridasTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cantidadCorridasTFActionPerformed
@@ -1250,12 +1277,25 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tiempoMaxTFActionPerformed
 
+    /**
+     * Al presionar el botón hace el panel de bienvenida invisible y
+     * hace visible el panel de inicialización de datos.
+     *
+     * @param evt presionar el botón
+     */
     private void comenzarBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comenzarBTNActionPerformed
         // TODO add your handling code here:
         this.PanelBienvenida.setVisible(false);
         this.PanelInitData.setVisible(true);
     }//GEN-LAST:event_comenzarBTNActionPerformed
 
+    /**
+     * Al presionar el botón de simular, revisa que hayan sido ingresados
+     * todos los datos y se asignan al sistema los valores de los parámetros
+     * ingresados para que pueda simular.
+     *
+     * @param evt presionar el botón.
+     */
     private void simularBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simularBTNActionPerformed
         // TODO add your handling code here:
         boolean completos = true;
@@ -1291,6 +1331,12 @@ public class Interfaz extends javax.swing.JFrame {
         
     }//GEN-LAST:event_simularBTNActionPerformed
 
+    /**
+     * Al presionar el botón, se hace invisible el panel de fin de cada corrida
+     * y se hace visible el panel interactivo donde se muestra la simulación.
+     *
+     * @param evt presionar el botón.
+     */
     private void continuarSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarSimActionPerformed
         // TODO add your handling code here:
         this.PanelFinCorridas.setVisible(false);
@@ -1298,6 +1344,12 @@ public class Interfaz extends javax.swing.JFrame {
         this.semEjecucion.release();
     }//GEN-LAST:event_continuarSimActionPerformed
 
+    /**
+     * Al presionar el botón salir, se deshace de esta interfaz
+     * y se le indica al controlador que el usuario optó por salir.
+     *
+     * @param evt presionar el botón.
+     */
     private void salirBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirBTNActionPerformed
         // TODO add your handling code here:
         this.controlador.setExit(true);
@@ -1305,6 +1357,12 @@ public class Interfaz extends javax.swing.JFrame {
         this.semEjecucion.release();
     }//GEN-LAST:event_salirBTNActionPerformed
 
+    /**
+     * Al presionar el botón, se hace invisible el panel final y se vuelve a poner visible el panel de
+     * inicialización de datos con todos los campos vacíos para que el usuario pueda simular de nuevo.
+     *
+     * @param evt
+     */
     private void nuevaBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevaBTNActionPerformed
         // TODO add your handling code here:
         this.cantidadCorridasTF.setText("");
@@ -1318,41 +1376,6 @@ public class Interfaz extends javax.swing.JFrame {
         this.PanelFinal.setVisible(false);
         this.PanelInitData.setVisible(true);
     }//GEN-LAST:event_nuevaBTNActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Interfaz().setVisible(true);
-//            }
-//        });
-//    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

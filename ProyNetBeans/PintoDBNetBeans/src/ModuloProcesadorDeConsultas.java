@@ -1,13 +1,33 @@
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 
+/**
+ * Clase ModuloProcesadorDeConsultas.
+ * Simula el comportamiento de este módulo en el DBMS.
+ */
 public class ModuloProcesadorDeConsultas extends Modulo {
 
+    /**
+     * Constructor de la clase.
+     * Inicializa sus atributos.
+     *
+     * @param estadistico
+     * @param estadisticoConsulta
+     * @param listaDeEventos
+     * @param calculador
+     * @param reloj
+     * @param n
+     */
     public ModuloProcesadorDeConsultas(Estadistico estadistico, EstadisticoConsulta estadisticoConsulta, PriorityQueue<Evento> listaDeEventos, CalculadorValoresAleatorios calculador, double reloj, int n){
         super(estadistico, estadisticoConsulta, listaDeEventos, calculador, reloj, n);
         this.cola = new LinkedList<>();
     }
 
+    /**
+     * Procesa la llegada de una consulta a este módulo.
+     *
+     * @param consulta la consulta entrante.
+     */
     void procesarLlegada(Consulta consulta){
         consulta.setTipoModulo(TipoModulo.ProcesadorDeConsultas);
         consulta.setTiempoIngresoModulo(this.reloj);
@@ -23,6 +43,11 @@ public class ModuloProcesadorDeConsultas extends Modulo {
         }
     }
 
+    /**
+     * Procesa la salida de una consulta de este módulo.
+     *
+     * @param consulta la consulta saliente.
+     */
     void procesarSalida(Consulta consulta){
         estadisticoConsulta.incrementarConsultasRecibidas(1, consulta);
         double tiempoTranscurrido = this.reloj-consulta.getTiempoIngresoModulo();
@@ -43,6 +68,11 @@ public class ModuloProcesadorDeConsultas extends Modulo {
 
     }
 
+    /**
+     * Calcula el tiempo en el que saldrá la consulta del módulo y genera la salida.
+     *
+     * @param consulta la consulta.
+     */
     private void generarSalidaProcConsultas(Consulta consulta){
         // Validación Lexica
         double tiempoValLexica = 0.1; //
@@ -66,6 +96,11 @@ public class ModuloProcesadorDeConsultas extends Modulo {
         this.listaDeEventos.add(new Evento(TipoEvento.SALIDA, TipoModulo.ProcesadorDeConsultas, tiempoOcurrencia, consulta));
     }
 
+    /**
+     * Genera la entrada al siguente módulo.
+     *
+     * @param consulta la consulta
+     */
     private void generarEntradaTAD(Consulta consulta){
         listaDeEventos.add(new Evento(TipoEvento.ENTRADA, TipoModulo.TransaccionYAccesoADatos, this.reloj, consulta));
     }

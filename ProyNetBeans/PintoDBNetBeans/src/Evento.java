@@ -1,9 +1,23 @@
+/**
+ * Clase Evento.
+ * Objeto que contiene los atributos concernientes a los eventos
+ * de este sistema.
+ */
 public class Evento implements Comparable <Evento> {
     private TipoModulo tipoModulo;
     private TipoEvento tipoEvento;
     private double tiempoOcurrencia;
     private Consulta consulta;
 
+    /**
+     * Constructor de la clase Evento.
+     * Inicializa sus atributos.
+     *
+     * @param tipoEvento
+     * @param tipoModulo
+     * @param tiempoOcurrencia el tiempo en el que ocurrirá
+     * @param consulta
+     */
     public Evento(TipoEvento tipoEvento, TipoModulo tipoModulo, double tiempoOcurrencia, Consulta consulta){
         this.tipoEvento = tipoEvento;
         this.tipoModulo = tipoModulo;
@@ -11,6 +25,13 @@ public class Evento implements Comparable <Evento> {
         this.consulta = consulta;
     }
 
+    /**
+     * Ordenamiento natural de los eventos.
+     *
+     * @param ev el otro evento con el que se compara.
+     * @return Si este evento es menor, mayor o igual que el otro.
+     */
+    @Override
     public int compareTo(Evento ev){
         //Si son eventos con la misma consulta, compara en base al tipo de evento, no en base al tiempo de ocurrencia.
         if(this.tiempoOcurrencia == ev.tiempoOcurrencia) { //Si hay dos eventos con el mismo tiempo de reloj
@@ -41,34 +62,65 @@ public class Evento implements Comparable <Evento> {
         return 0;
     }
 
+    /**
+     * Devuelve el tipo de evento de este evento.
+     *
+     * @return el tipo de evento.
+     */
     public TipoEvento getTipoEvento() {
         return tipoEvento;
     }
 
-    public void setTipoEvento(TipoEvento tipoEvento) {
-        this.tipoEvento = tipoEvento;
-    }
-
+    /**
+     * Devuelve el tipo de módulo en el que ocurrirá este evento.
+     *
+     * @return el tipo de módulo.
+     */
     public TipoModulo getTipoModulo() {
         return tipoModulo;
     }
 
+    /**
+     * Asigna el tipo de módulo en el que ocurrirá este evento.
+     *
+     * @param tipoModulo el tipo de módulo.
+     */
     public void setTipoModulo(TipoModulo tipoModulo) {
         this.tipoModulo = tipoModulo;
     }
 
+    /**
+     * Devuelve el tiempo en el que ocurrirá este evento.
+     *
+     * @return el tiempo de ocurrencia.
+     */
     public double getTiempoOcurrencia() {
         return tiempoOcurrencia;
     }
 
+    /**
+     * Asigna a este evento el tiempo en el que ocurrirá.
+     *
+     * @param tiempoOcurrencia el tiempo de ocurrencia a asignar.
+     */
     public void setTiempoOcurrencia(double tiempoOcurrencia) {
         this.tiempoOcurrencia = tiempoOcurrencia;
     }
 
+    /**
+     * Devuelve la consulta que contiene este evento.
+     *
+     * @return la consulta.
+     */
     public Consulta getConsulta() {
         return consulta;
     }
 
+    /**
+     * Le asigna a este evento una consulta.
+     *
+     * @param consulta la consulta a asignar.
+     */
     public void setConsulta(Consulta consulta) {
         this.consulta = consulta;
     }

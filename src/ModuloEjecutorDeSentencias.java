@@ -1,13 +1,33 @@
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 
+/**
+ * Clase ModuloEjecutorDeSentencias.
+ * Simula el comportamiento de este módulo en el DBMS.
+ */
 public class ModuloEjecutorDeSentencias extends Modulo {
 
+    /**
+     * Constructor de la clase.
+     * Inicializa sus atributos.
+     *
+     * @param estadistico
+     * @param estadisticoConsulta
+     * @param listaDeEventos
+     * @param calculador
+     * @param reloj
+     * @param m
+     */
     public ModuloEjecutorDeSentencias(Estadistico estadistico, EstadisticoConsulta estadisticoConsulta, PriorityQueue<Evento> listaDeEventos, CalculadorValoresAleatorios calculador, double reloj, int m){
         super(estadistico, estadisticoConsulta, listaDeEventos, calculador, reloj, m);
         this.cola = new LinkedList<>();
     }
 
+    /**
+     * Procesa la llegada de una consulta a este módulo.
+     *
+     * @param consulta la consulta entrante.
+     */
     void procesarLlegada(Consulta consulta){
         consulta.setTipoModulo(TipoModulo.EjecutorDeSentencias);
         consulta.setTiempoIngresoModulo(this.reloj);
@@ -22,6 +42,11 @@ public class ModuloEjecutorDeSentencias extends Modulo {
         }
     }
 
+    /**
+     * Procesa la salida de una consulta de este módulo.
+     *
+     * @param consulta la consulta saliente.
+     */
     void procesarSalida(Consulta consulta){
         estadisticoConsulta.incrementarConsultasRecibidas(3, consulta);
         double tiempoTranscurrido = this.reloj-consulta.getTiempoIngresoModulo();
@@ -42,6 +67,11 @@ public class ModuloEjecutorDeSentencias extends Modulo {
 
     }
 
+    /**
+     * Calcula el tiempo en el que saldrá la consulta del módulo y genera la salida.
+     *
+     * @param consulta la consulta.
+     */
     private void generarSalidaEjecSentencias(Consulta consulta) {
         int bloques = consulta.getB();
         double milisEjec = (double)(bloques * bloques); // cast
@@ -59,6 +89,11 @@ public class ModuloEjecutorDeSentencias extends Modulo {
         this.listaDeEventos.add(new Evento(TipoEvento.SALIDA, TipoModulo.EjecutorDeSentencias, tiempoOcurrencia, consulta));
     }
 
+    /**
+     * Genera la entrada al siguente módulo.
+     *
+     * @param consulta la consulta
+     */
     private void generarSalidaAdmClientes(Consulta consulta){
         this.listaDeEventos.add(new Evento(TipoEvento.SALIDA, TipoModulo.ClientesYConexiones, this.reloj, consulta));
     }
