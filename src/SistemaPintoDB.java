@@ -68,19 +68,9 @@ public class SistemaPintoDB {
         eventoActual.getConsulta().setTiempoIngreso(this.reloj); //Se le da a la consulta el tiempo en el que ingresó al sistema.
         this.reloj = eventoActual.getTiempoOcurrencia(); //Se actualiza el reloj.
         double relojAnterior = this.reloj;
-        //this.semActualizacion.release();
-        
-//        try{
-//            this.semActualizacion.acquire();
-//        }catch(Exception e){}
+
         while(reloj < duracionSimulacion){
-            System.out.println("Reloj del sistema: " + this.reloj + " ---- Procesando una " + eventoActual.getTipoEvento() + " en el modulo " + eventoActual.getTipoModulo());
             this.mandarAProcesar(eventoActual);
-            System.out.println("Longitud cola Administrador de Procesos: " + adminProcesos.getCola().size());
-            System.out.println("Longitud cola Procesador de Consultas: " + procesadorConsultas.getCola().size());
-            System.out.println("Longitud cola Transaccion Y Acceso a Datos: " + adminDatos.getCola().size());
-            System.out.println("Longitud cola Ejecutor de Sentencias: " + ejecutorSentencias.getCola().size());
-            System.out.println("ConexionesDescartadas :" + adminClientes.getConexionesDescartadas());
             eventoActual = listaDeEventos.poll(); //Saca el siguiente evento de la lista de eventos.
             eventoActual.getConsulta().setTiempoIngreso(this.reloj); //Se le da a la consulta el tiempo en el que ingresó al sistema.
             this.reloj = eventoActual.getTiempoOcurrencia(); //Se actualiza el reloj.
@@ -88,13 +78,11 @@ public class SistemaPintoDB {
             if(this.reloj != relojAnterior){ //Hubo un cambio de reloj
                 relojAnterior = this.reloj;
                 if(this.modoLento){
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                 }
             }
             System.out.println("\n");
         }
-        //this.estadistico.setConexionesDescartadas(adminClientes.getConexionesDescartadas()); //Actualizo las conexiones descartadas.
-       //this.estadistico.incrementarTamanosAcumuladosDeColasPorModulo(this.getTamanoColaPorModulo());
     }
     
 

@@ -29,7 +29,7 @@ public class Controlador {
         this.exit = false;
     }
 
-    public void ejecutar() {
+    public void ejecutar() throws InterruptedException {
         try {
             semEjecucion.acquire();
         } catch (InterruptedException e) {}
@@ -204,7 +204,7 @@ public class Controlador {
         this.exit = exit;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Controlador controlador = new Controlador();
         controlador.ejecutar();
     }

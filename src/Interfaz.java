@@ -270,8 +270,6 @@ public class Interfaz extends javax.swing.JFrame {
         relojL = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         conexionesDescartadasL = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        corridaAct = new javax.swing.JLabel();
         PanelFinCorridas = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -517,7 +515,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
         jLabel6.setText("¡Simulación en proceso!");
-        PanelInteractivo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
+        PanelInteractivo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, -1));
 
         tablaColas.setBackground(new java.awt.Color(255, 255, 204));
         tablaColas.setBorder(new javax.swing.border.MatteBorder(null));
@@ -585,15 +583,6 @@ public class Interfaz extends javax.swing.JFrame {
         conexionesDescartadasL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         conexionesDescartadasL.setText("0");
         PanelInteractivo.add(conexionesDescartadasL, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 80, -1));
-
-        jLabel20.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        jLabel20.setText("Corrida número:");
-        PanelInteractivo.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, -1));
-
-        corridaAct.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        corridaAct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        corridaAct.setText("0");
-        PanelInteractivo.add(corridaAct, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 80, -1));
 
         getContentPane().add(PanelInteractivo, "card4");
 
@@ -1318,6 +1307,14 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void nuevaBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevaBTNActionPerformed
         // TODO add your handling code here:
+        this.cantidadCorridasTF.setText("");
+        this.tiempoMaxTF.setText("");
+        this.kTF.setText("");
+        this.nTF.setText("");
+        this.pTF.setText("");
+        this.mTF.setText("");
+        this.tTF.setText("");
+        
         this.PanelFinal.setVisible(false);
         this.PanelInitData.setVisible(true);
     }//GEN-LAST:event_nuevaBTNActionPerformed
@@ -1386,7 +1383,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel conexDescPromTotal;
     private javax.swing.JLabel conexionesDescartadasL;
     private javax.swing.JButton continuarSim;
-    private javax.swing.JLabel corridaAct;
     private javax.swing.JLabel ddlTMAC;
     private javax.swing.JLabel ddlTMACTotal;
     private javax.swing.JLabel ddlTMAP;
@@ -1410,7 +1406,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
