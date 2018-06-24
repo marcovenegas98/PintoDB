@@ -1,3 +1,5 @@
+import org.apache.commons.math3.distribution.TDistribution;
+import java.util.ArrayList;
 /**
  * Clase EstadisticoConsulta.
  * Se encarga de calcular todas aquellas estadísticas que tienen que ver
@@ -29,6 +31,8 @@ public class EstadisticoConsulta {
     private double[][] acumuladoTiemposPromedioConsultasPorModulo; //Se acumulan los promedio de todas las corridas aquí.
     private double acumuladoDeTiemposDeVidaPromedio;
 
+    private ArrayList<Double> promediosDeVida;
+    private double tiempoPromedioDeVidaTotal;
     /**
      * Constructor de la clase EstadisticoConsulta.
      * Inicializa sus atributos.
@@ -38,6 +42,7 @@ public class EstadisticoConsulta {
         tiempoTotalConsultas = new double[5][4];
         tiempoConsultasPorModulo = new double[5][4];
         acumuladoTiemposPromedioConsultasPorModulo = new double[5][4];
+        promediosDeVida = new ArrayList<>();
         this.reset();
     }
 
@@ -80,6 +85,8 @@ public class EstadisticoConsulta {
                 this.acumuladoTiemposPromedioConsultasPorModulo[i][j] = 0;
             }
         }
+        this.promediosDeVida.clear();
+        this.tiempoPromedioDeVidaTotal = 0;
     }
 
     /**
@@ -130,7 +137,35 @@ public class EstadisticoConsulta {
      * @return el tiempo promedio de vida.
      */
     public double getTiempoPromedioDeVidaTotalCorridas(int corridas){
-        return acumuladoDeTiemposDeVidaPromedio/corridas;
+        this.tiempoPromedioDeVidaTotal = acumuladoDeTiemposDeVidaPromedio/corridas;
+        return this.tiempoPromedioDeVidaTotal;
+    }
+
+    /**
+     * Calcula un intervalo de confianza para el promedio de tiempo de vida
+     * de una conexión en el sistema, con un 80% de precisión.
+     *
+     * @return intervalo de confianza.
+     */
+    public double[] getIntervaloDeConfianza(){
+        double[] intervaloConfianza = new double[2];
+        int N = promediosDeVida.size();
+        double gradosDeLibertad = (double)(N-1);
+        TDistribution distribucion = new TDistribution(gradosDeLibertad);
+        double sumatoria = 0.0;
+
+        for(int i = 0; i < N; ++i){
+            double resta = promediosDeVida.get(i) - tiempoPromedioDeVidaTotal;
+            double restaAlCuadrado = resta * resta;
+            sumatoria += restaAlCuadrado;
+        }
+        double sumatoriaEntreN = sumatoria / (double)N;
+        double desviacionEstandard = Math.sqrt(sumatoriaEntreN);
+        double probabilidadAcumuladaInversa = distribucion.inverseCumulativeProbability(0.04); //(1-0.8)^2 para un 80% de precisión.
+        double desviacion = desviacionEstandard * probabilidadAcumuladaInversa;
+        intervaloConfianza[0] = tiempoPromedioDeVidaTotal + desviacion;
+        intervaloConfianza[1] = tiempoPromedioDeVidaTotal - desviacion;
+        return intervaloConfianza;
     }
 
     /**
@@ -195,6 +230,10 @@ public class EstadisticoConsulta {
      */
     public void incrementarTiempoConsulta(int modulo, Consulta consulta, double tiempo){
         tiempoTotalConsultas[modulo][getTipoConsulta(consulta)] += tiempo;
+    }
+
+    public void agregarTiempoPromedioDeVida(double tiempoPromedioDeVida){
+        this.promediosDeVida.add(tiempoPromedioDeVida);
     }
 
     /**

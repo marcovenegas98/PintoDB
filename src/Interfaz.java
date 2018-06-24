@@ -230,6 +230,10 @@ public class Interfaz extends javax.swing.JFrame {
         
         this.conexDescPromTotal.setText(""+ this.controlador.getConexionesDescartadasPromedioTotal());
         
+        double[] intervaloConfianza = this.controlador.getIntervaloDeConfianza();
+        this.cotaInfL.setText("" + intervaloConfianza[0]);
+        this.cotaSupL.setText("" + intervaloConfianza[1]);
+        
         this.PanelInteractivo.setVisible(false);
         this.PanelFinal.setVisible(true);
         
@@ -418,6 +422,12 @@ public class Interfaz extends javax.swing.JFrame {
         updateTMTADTotal = new javax.swing.JLabel();
         nuevaBTN = new javax.swing.JButton();
         salirBTN = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        cotaInfL = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        cotaSupL = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Simulación SistemaPintoDB");
@@ -1261,6 +1271,27 @@ public class Interfaz extends javax.swing.JFrame {
         });
         PanelFinal.add(salirBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
 
+        jLabel20.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel20.setText("Intervalo de confianza para la vida de una conexión: ");
+        PanelFinal.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        jLabel24.setText("[");
+        PanelFinal.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, -1, -1));
+
+        cotaInfL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cotaInfL.setText("0");
+        PanelFinal.add(cotaInfL, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, 50, -1));
+
+        jLabel41.setText(",");
+        PanelFinal.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, -1, -1));
+
+        cotaSupL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cotaSupL.setText("0");
+        PanelFinal.add(cotaSupL, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 50, -1));
+
+        jLabel57.setText("]");
+        PanelFinal.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, -1, -1));
+
         getContentPane().add(PanelFinal, "card2");
 
         setSize(new java.awt.Dimension(608, 363));
@@ -1406,6 +1437,8 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel conexDescPromTotal;
     private javax.swing.JLabel conexionesDescartadasL;
     private javax.swing.JButton continuarSim;
+    private javax.swing.JLabel cotaInfL;
+    private javax.swing.JLabel cotaSupL;
     private javax.swing.JLabel ddlTMAC;
     private javax.swing.JLabel ddlTMACTotal;
     private javax.swing.JLabel ddlTMAP;
@@ -1429,9 +1462,11 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
@@ -1450,6 +1485,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
@@ -1465,6 +1501,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

@@ -86,6 +86,7 @@ public class Controlador {
 
         double tiempoPromVida = this.estadisticoConsulta.calcularTiempoPromedioDeVida();
         this.estadisticoConsulta.incrementarAcumuladoDeTiemposDeVidaPromedio(tiempoPromVida);
+        this.estadisticoConsulta.agregarTiempoPromedioDeVida(tiempoPromVida);
 
         double[][] tiempoPromedioConsultaPorModulo = this.estadisticoConsulta.calcularTiempoPromedioDeSentenciaPorModulo();
         this.estadisticoConsulta.incrementarAcumuladoTiemposPromedioConsultasPorModulo(tiempoPromedioConsultaPorModulo);
@@ -239,6 +240,15 @@ public class Controlador {
      */
     public double getConexionesDescartadasPromedioTotal() {
         return this.estadistico.getPromedioConexionesDescartadasTotalCorridas(cantidadCorridas);
+    }
+
+    /**
+     * Le pide al estadístico de consultas el intervalo de confianza y lo devuelve.
+     *
+     * @return el intervalo de confianza.
+     */
+    public double[] getIntervaloDeConfianza(){
+        return this.estadisticoConsulta.getIntervaloDeConfianza();
     }
 
     /**
