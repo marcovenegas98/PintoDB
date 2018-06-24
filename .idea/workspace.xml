@@ -2,16 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3f4b925-f2f2-4aa9-bc32-84d26e9ef0c6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/Controlador.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/SistemaPintoDB$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/SistemaPintoDB.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/TipoConsulta.class" afterPath="$PROJECT_DIR$/out/production/TPIO/TipoConsulta.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/TipoEvento.class" afterPath="$PROJECT_DIR$/out/production/TPIO/TipoEvento.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TPIO/TipoModulo.class" afterPath="$PROJECT_DIR$/out/production/TPIO/TipoModulo.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/CalculadorValoresAleatorios.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/Consulta.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/Estadistico.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/EstadisticoConsulta$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/EstadisticoConsulta.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/Evento.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/Modulo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/TipoConsulta.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/TipoEvento.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TPIO/TipoModulo.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TPIO.iml" afterPath="$PROJECT_DIR$/TPIO.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controlador.java" afterPath="$PROJECT_DIR$/src/Controlador.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EstadisticoConsulta.java" afterPath="$PROJECT_DIR$/src/EstadisticoConsulta.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,35 +23,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Controlador.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Controlador.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="247" column="41" lean-forward="true" selection-start-line="247" selection-start-column="41" selection-end-line="247" selection-end-column="41" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#9267#9268#0" expanded="true" />
-                <element signature="e#9340#9341#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EstadisticoConsulta.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/EstadisticoConsulta.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="53">
-              <caret line="147" column="38" lean-forward="false" selection-start-line="147" selection-start-column="38" selection-end-line="147" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1529796455000" expanded="true" signature="6830:6838" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -144,9 +117,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -167,7 +138,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -314,18 +287,18 @@
       <workItem from="1529783876064" duration="909000" />
       <workItem from="1529785762453" duration="689000" />
       <workItem from="1529788749098" duration="3122000" />
+      <workItem from="1529799414500" duration="330000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66843000" />
+    <option name="totallyTimeSpent" value="67173000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -348,6 +321,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -370,22 +344,7 @@
         <state relative-caret-position="5235">
           <caret line="349" column="76" lean-forward="true" selection-start-line="349" selection-start-column="76" selection-end-line="349" selection-end-column="76" />
           <folding>
-            <element signature="e#0#80991#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#18916#18917#0" expanded="true" />
-            <element signature="e#18979#18980#0" expanded="true" />
-            <marker date="1529789357000" expanded="false" signature="21598:21617" ph=" { " />
-            <marker date="1529789357000" expanded="false" signature="21656:21670" ph=" }" />
-            <marker date="1529789357000" expanded="false" signature="22232:22251" ph=" { " />
-            <marker date="1529789357000" expanded="false" signature="22283:22297" ph=" }" />
-            <marker date="1529789357000" expanded="false" signature="25182:25201" ph=" { " />
-            <marker date="1529789357000" expanded="false" signature="25232:25246" ph=" }" />
-            <marker date="1529789357000" expanded="false" signature="48586:48605" ph=" { " />
-            <marker date="1529789357000" expanded="false" signature="48638:48652" ph=" }" />
-            <marker date="1529789357000" expanded="false" signature="68373:68392" ph=" { " />
-            <marker date="1529789357000" expanded="false" signature="68421:68435" ph=" }" />
-            <marker date="1529789357000" expanded="false" signature="68809:68828" ph=" { " />
-            <marker date="1529789357000" expanded="false" signature="68857:68871" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -406,7 +365,7 @@
           <caret line="52" column="36" lean-forward="false" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1529796455000" expanded="true" signature="6830:6838" ph="{...}" />
+            <marker date="1529798625000" expanded="true" signature="6830:6838" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -493,7 +452,7 @@
           <caret line="52" column="36" lean-forward="false" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1529796455000" expanded="true" signature="6830:6838" ph="{...}" />
+            <marker date="1529798625000" expanded="true" signature="6830:6838" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -647,7 +606,7 @@
           <caret line="0" column="32" lean-forward="false" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1529796455000" expanded="true" signature="6830:6838" ph="{...}" />
+            <marker date="1529798625000" expanded="true" signature="6830:6838" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -801,22 +760,7 @@
         <state relative-caret-position="925">
           <caret line="431" column="49" lean-forward="false" selection-start-line="431" selection-start-column="49" selection-end-line="431" selection-end-column="49" />
           <folding>
-            <element signature="e#0#80991#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#18916#18917#0" expanded="true" />
-            <element signature="e#18979#18980#0" expanded="true" />
-            <marker date="1529789357000" expanded="false" signature="21598:21617" ph=" { " />
-            <marker date="1529789357000" expanded="false" signature="21656:21670" ph=" }" />
-            <marker date="1529789357000" expanded="false" signature="22232:22251" ph=" { " />
-            <marker date="1529789357000" expanded="false" signature="22283:22297" ph=" }" />
-            <marker date="1529789357000" expanded="false" signature="25182:25201" ph=" { " />
-            <marker date="1529789357000" expanded="false" signature="25232:25246" ph=" }" />
-            <marker date="1529789357000" expanded="false" signature="48586:48605" ph=" { " />
-            <marker date="1529789357000" expanded="false" signature="48638:48652" ph=" }" />
-            <marker date="1529789357000" expanded="false" signature="68373:68392" ph=" { " />
-            <marker date="1529789357000" expanded="false" signature="68421:68435" ph=" }" />
-            <marker date="1529789357000" expanded="false" signature="68809:68828" ph=" { " />
-            <marker date="1529789357000" expanded="false" signature="68857:68871" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -829,25 +773,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EstadisticoConsulta.java">
+    <entry file="file://$PROJECT_DIR$/src/Controlador.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="147" column="38" lean-forward="false" selection-start-line="147" selection-start-column="38" selection-end-line="147" selection-end-column="38" />
+        <state relative-caret-position="538">
+          <caret line="270" column="52" lean-forward="true" selection-start-line="270" selection-start-column="52" selection-end-line="270" selection-end-column="52" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1529796455000" expanded="true" signature="6830:6838" ph="{...}" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controlador.java">
+    <entry file="file://$PROJECT_DIR$/src/EstadisticoConsulta.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="247" column="41" lean-forward="true" selection-start-line="247" selection-start-column="41" selection-end-line="247" selection-end-column="41" />
+        <state relative-caret-position="278">
+          <caret line="162" column="41" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="269" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#9267#9268#0" expanded="true" />
-            <element signature="e#9340#9341#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <marker date="1529798625000" expanded="true" signature="6830:6838" ph="{...}" />
           </folding>
         </state>
       </provider>
